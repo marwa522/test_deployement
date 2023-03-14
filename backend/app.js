@@ -17,14 +17,14 @@ con.connect(function(err) {
     if (err) throw err;
     console.log(result);
   });
-  con.query("SELECT * FROM tbavis", function (err, result, fields) {
+  /**con.query("SELECT * FROM tbavis", function (err, result, fields) {
     if (err) throw err;
     console.log(result);
   });
   con.query("SELECT idCommandes,prénomClient FROM tbcommandes JOIN tbclients WHERE idClients = '0001'", function (err, result, fields) {
     if (err) throw err;
     console.log(result);
-  });
+  });**/
 });
 
 
