@@ -2,7 +2,7 @@
 
 endpoint: /client/:id
   method: GET
-  description: rechercher un client sur base de son id
+  description: rechercher un client sur la base de son id
   request: 
     Headers:
 
@@ -13,7 +13,7 @@ endpoint: /client/:id
 
 endpoint: /client/:nom
   method: GET
-  description: rechercher un client sur base de son nom
+  description: rechercher un client sur la base de son nom
   request: 
     Headers:
 
@@ -24,7 +24,7 @@ endpoint: /client/:nom
 
 endpoint: /client/id:nom:mail:gsm
   method: GET
-  description: rechercher un client sur base de son id, son nom, son mail et son gsm.
+  description: rechercher un client sur la base de son id, son nom, son mail et son gsm.
   request: 
     Headers:
 
