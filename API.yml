@@ -1,5 +1,137 @@
 # Get : 
 
+endpoint: /client/:id
+  method: GET
+  description: rechercher un client sur base de son id
+  request: 
+    Headers:
+
+  responses:
+    success:
+      code: 200
+
+
+endpoint: /client/:nom
+  method: GET
+  description: rechercher un client sur base de son nom
+  request: 
+    Headers:
+
+  responses:
+    success:
+      code: 200
+
+
+endpoint: /client/id:nom:mail:gsm
+  method: GET
+  description: rechercher un client sur base de son id, son nom, son mail et son gsm.
+  request: 
+    Headers:
+
+  responses:
+    success:
+      code: 200
+
+
+endpoint: /produits/
+  method: GET
+  description: accéder au liste de produit
+  request: 
+    Headers:
+
+  responses:
+    success:
+      code: 200
+
+
+endpoint: /commandes/
+  method: GET
+  description: accéder aux listes de commandes
+  request: 
+    Headers:
+
+  responses:
+    success:
+      code: 200
+
+
+endpoint: /commande/:id:date:produit:categorie
+  method: GET
+  description: accéder aux détails du commande 
+  request: 
+    Headers:
+
+  responses:
+    success:
+      code: 200
+      
+   endpoint: /Produits/:categorie
+  method: GET
+  description: accéder aux produits d'une certaine catégorie
+  request: 
+    Headers:
+
+  responses:
+    success:
+      code: 200
+
+
+endpoint: produits/:collection
+  method: Get
+  description: un client ou gestionnaire qui veut  accéder aux produits d'une certaine collection
+  request: 
+    Headers:
+
+  responses:
+    success:
+      code: 200
+
+
+endpoint: produit/:id:nom
+  method: GET
+  description: un client / gestionnaire qui souhaite voir umodéle précis
+  request: 
+    Headers:
+
+  responses:
+    success:
+      code: 200
+
+
+endpoint: produit/:id:price
+  method: GET
+  description: voir le prix d'un produit 
+  request: 
+    Headers:
+
+  responses:
+    success:
+      code: 200
+
+
+endpoint: commande/:id:nom:date
+  method: DELETE
+  description: supprimer une commande
+  request: 
+    Headers:
+
+  responses:
+    success:
+      code: 200
+
+
+endpoint: avis/:id:date
+  method: DELETE
+  description: supprimer un avis
+  request: 
+    Headers:
+
+  responses:
+    success:
+      code: 200
+
+   
+
 
 
 # Post :
