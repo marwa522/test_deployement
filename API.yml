@@ -104,36 +104,8 @@ endpoint: produit/:id:price
   request: 
     Headers:
 
-  responses:
-    success:
-      code: 200
-
-
-endpoint: commande/:id:nom:date
-  method: DELETE
-  description: supprimer une commande
-  request: 
-    Headers:
-
-  responses:
-    success:
-      code: 200
-
-
-endpoint: avis/:id:date
-  method: DELETE
-  description: supprimer un avis
-  request: 
-    Headers:
-
-  responses:
-    success:
-      code: 200
 
    
-
-
-
 # Post :
 
 
