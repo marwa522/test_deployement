@@ -1,5 +1,5 @@
-# frontend
 
+<<<<<<< HEAD
 This template should help get you started developing with Vue 3 in Vite.
 
 ## Recommended IDE Setup
@@ -55,3 +55,5 @@ npm run test:e2e
 ```sh
 npm run lint
 ```
+=======
+>>>>>>> fb89fecccb6f7bdbbd17d21dd036054498db6d52
