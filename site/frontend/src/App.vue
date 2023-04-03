@@ -1,25 +1,45 @@
 <template>
   <header>
-    <Header/>
+    <Entete/>
   </header>
-  <main>
-    <Accueil />
+  <main v-if="corps === 'Accueil'">
+    <Accueil/>
+  </main>
+  <main v-if="corps === 'Creations'">
+    <Creations/>
+  </main>
+  <main v-if="corps === 'Services'">
+    <Services/>
+  </main>
+  <main v-if="corps === 'Marque'">
+    <Marque/>
+  </main>
+  <main v-if="corps === 'Contact'">
+    <Contact/>
+  </main>
+  <main v-if="corps === 'FAQ'">
+    <FAQ/>
   </main>
   <footer>
-    <Footer/>
+    <BasDePage/>
   </footer>
 </template>
 
 <script>
 import Accueil from './views/Accueil.vue'
-import Footer from "@/views/BasDePage.vue";
-import Header from "@/views/Entete.vue";
+import BasDePage from "@/views/BasDePage.vue";
+import Entete from "@/views/Entete.vue";
 
 export default {
   components: {
-    Header,
-    Footer,
+    Entete,
+    BasDePage,
     Accueil
+  },
+  data: function () {
+    return {
+      corps: "Accueil"
+    };
   }
 }
 </script>

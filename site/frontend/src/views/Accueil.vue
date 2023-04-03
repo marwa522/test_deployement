@@ -22,7 +22,7 @@
         <h1 id="titre-event">Kabori sur un podium</h1>
         <ul class="event-imgs">
           <li>
-
+            <img src="chevronGauche.jpg" alt="flèche vers la gauche" width="75px" height="75px">
           </li>
           <li>
             <img src="model1.jpeg" alt="model1" class="event-img">
@@ -40,7 +40,7 @@
             <img src="model5.jpeg" alt="model5" class="event-img">
           </li>
           <li>
-            <font-awesome-icon :icon="['fat', 'angle-left']" />
+            <img src="chevronDroite.png" alt="flèche à droite" width="75px" height="75px">
           </li>
         </ul>
       </div>
@@ -48,7 +48,7 @@
         <h1 id="titre-event">Nos créations</h1>
         <ul class="model-imgs">
           <li>
-
+            <img src="chevronGauche.jpg" alt="flèche vers la gauche" width="75px" height="75px">
           </li>
           <li>
             <img src="model1.jpeg" alt="model1" class="model-img">
@@ -64,6 +64,9 @@
           </li>
           <li>
             <img src="model5.jpeg" alt="model5" class="model-img">
+          </li>
+          <li>
+            <img src="chevronDroite.png" alt="flèche à droite" width="75px" height="75px">
           </li>
         </ul>
 
@@ -127,7 +130,7 @@ export default {
   top: 150%; /* positionne le haut du conteneur à la moitié de l'image */
   right: 0.75%; /* positionne la gauche du conteneur à la moitié de l'image */
   background-color: rgba(255, 255, 255, 0.1); /* ajoute un fond semi-transparent pour le texte */
-  padding: 10px; /* ajoute un peu d'espace autour du texte */
+  padding: 5px; /* ajoute un peu d'espace autour du texte */
   color : white;
   text-align: center;
   height:350px;
@@ -149,12 +152,12 @@ export default {
   align-items: center;
   list-style-type: none;
 }
-.event-img, .model-img{
+.event-img, .model-img {
   height: 400px;
-  width: auto;
+  width: 257px;
   display: flex;
   list-style: none;
-  margin: 10px;
+  margin: 5px;
   padding: 0;
   box-sizing: content-box;
   font-size: larger;
