@@ -2,12 +2,12 @@
   <div class="bas-de-page">
     <nav class="navbar">
       <ul class="nav-list">
-        <li @click="corps = 'Accueil'">Accueil</li>
-        <li @click="corps = 'Creations'">Nos créations</li>
-        <li @click="corps = 'Services'">Nos services</li>
-        <li @click="corps = 'Marque'">La marque</li>
-        <li @click="corps = 'Contact'">Nous contacter</li>
-        <li @click="corps = 'FAQ'">FAQ</li>
+        <li >Accueil</li>
+        <li >Nos créations</li>
+        <li >Nos services</li>
+        <li >La marque</li>
+        <li >Nous contacter</li>
+        <li >FAQ</li>
       </ul>
     </nav>
   </div>
@@ -27,8 +27,10 @@
 </template>
 
 <script>
+
 export default {
-  name: "BasDePage"
+  name: "BasDePage",
+
 }
 </script>
 

@@ -1,5 +1,6 @@
 <template>
   <header>
+    <Entete/>
   </header>
   <main>
     <img id="model3" src="model3.jpeg"  alt="photo page d'accueil"  class="pr-img">
@@ -74,16 +75,23 @@
     </div>
   </main>
   <footer >
+    <BasDePage/>
   </footer>
 </template>
 
 <script>
 import AOS from 'aos';
+import { mapGetters } from 'vuex';
 import 'aos/dist/aos.css';
+import BasDePage from "@/components/BasDePage.vue";
+import Entete from "@/components/Entete.vue";
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: 'Accueil',
-  components: {},
+  components: {
+    Entete,
+    BasDePage,
+  },
   mounted() {
     AOS.init({
       offset: 200,
@@ -92,6 +100,9 @@ export default {
       delay: 100,
     });
   },
+  computed: {
+    ...mapGetters(['corps'])
+  }
 
 }
 
@@ -111,7 +122,7 @@ export default {
 }
 
 .pr-text1 {
-  position: absolute; /* positionnement absolu par rapport au conteneur parent (image-container) */
+  position: absolute; /* positionnement absolu par rapport au conteneur parent */
   top: 75%; /* positionne le haut du conteneur à la moitié de l'image */
   left: 25%; /* positionne la gauche du conteneur à la moitié de l'image */
   background-color: rgba(255, 255, 255, 0.1); /* ajoute un fond semi-transparent pour le texte */
@@ -126,7 +137,7 @@ export default {
   max-width: 800px;
 }
 .pr-text2{
-  position: absolute; /* positionnement absolu par rapport au conteneur parent (image-container) */
+  position: absolute; /* positionnement absolu par rapport au conteneur parent */
   top: 150%; /* positionne le haut du conteneur à la moitié de l'image */
   right: 0.75%; /* positionne la gauche du conteneur à la moitié de l'image */
   background-color: rgba(255, 255, 255, 0.1); /* ajoute un fond semi-transparent pour le texte */

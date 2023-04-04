@@ -4,12 +4,12 @@
       <img id="logo1" class="image" src="logo1.png" alt="logo">
       <nav class="navbar">
         <ul class="nav-list">
-          <li @click="corps = 'Accueil'">Accueil</li>
-          <li @click="corps = 'Creations'">Nos créations</li>
-          <li @click="corps = 'Services'">Nos services</li>
-          <li @click="corps = 'Marque'">La marque</li>
-          <li @click="corps = 'Contact'">Nous contacter</li>
-          <li @click="corps = 'FAQ'">FAQ</li>
+          <li ><router-link to="/">Accueil</router-link></li>
+          <li ><router-link to="/creations">Nos créations</router-link></li>
+          <li >Nos services</li>
+          <li >La marque</li>
+          <li >Nous contacter</li>
+          <li>FAQ</li>
         </ul>
       </nav>
     </div>
@@ -17,10 +17,11 @@
 </template>
 
 <script>
+
+import { mapGetters } from 'vuex'
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: "Entete",
-  props: ['corps']
 }
 </script>
 

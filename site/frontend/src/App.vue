@@ -1,45 +1,20 @@
 <template>
-  <header>
-    <Entete/>
-  </header>
-  <main v-if="corps === 'Accueil'">
-    <Accueil/>
-  </main>
-  <main v-if="corps === 'Creations'">
-    <Creations/>
-  </main>
-  <main v-if="corps === 'Services'">
-    <Services/>
-  </main>
-  <main v-if="corps === 'Marque'">
-    <Marque/>
-  </main>
-  <main v-if="corps === 'Contact'">
-    <Contact/>
-  </main>
-  <main v-if="corps === 'FAQ'">
-    <FAQ/>
-  </main>
-  <footer>
-    <BasDePage/>
-  </footer>
+  <body >
+  <router-view/>
+  </body>
+
 </template>
 
 <script>
-import Accueil from './views/Accueil.vue'
-import BasDePage from "@/views/BasDePage.vue";
-import Entete from "@/views/Entete.vue";
+import Accueil from './views/Accueil.vue';
+import Creations from './views/Creations.vue';
+import test from './views/test.vue';
 
 export default {
   components: {
-    Entete,
-    BasDePage,
-    Accueil
-  },
-  data: function () {
-    return {
-      corps: "Accueil"
-    };
+    Accueil,
+    Creations,
+    test
   }
 }
 </script>
