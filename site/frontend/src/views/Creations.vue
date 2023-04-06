@@ -10,18 +10,9 @@
       Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.
       </p>
       <h2>Model1</h2>
-      <div class="img-model1">
-        <div class="photo">
-          <img src="model1.jpeg" alt="image1" />
-        </div>
-        <div class="photo">
-          <img src="model2.jpeg" alt="image2">
-        </div>
-        <div class="photo">
-          <img src="model3.jpeg" alt="image3">
-        </div>
-        <div class="photo">
-          <img src="model4.jpeg" alt="image4">
+      <div class="model1-imgs">
+        <div v-for="image in images1" :key="image.id" >
+          <img :src="image.url" alt="image">
         </div>
       </div>
     </div>
@@ -35,12 +26,31 @@
 <script>
 import Entete from "@/components/Entete.vue";
 import BasDePage from "@/components/BasDePage.vue";
+import CarouselModel1 from "@/components/CarouselModel1.vue";
 export default {
+  // eslint-disable-next-line vue/multi-word-component-names
+  data() {
+    return {
+      images1: [
+        { id: 1, url: 'model1.jpeg' },
+        { id: 2, url: 'model2.jpeg' },
+        { id: 3, url: 'model3.jpeg' },
+        { id: 4, url: 'model4.jpeg' }
+      ],
+      showCarousel: false,
+      images2: [
+        { id: 1, url: 'model4.jpeg' },
+        { id: 2, url: 'model3.jpeg' },
+        { id: 3, url: 'model2.jpeg' },
+        { id: 4, url: 'model1.jpeg' }
+      ]
+    }
+  },
   // eslint-disable-next-line vue/multi-word-component-names
   name: "Creations",
   components:{
     Entete,
-    BasDePage
+    BasDePage,
   }
 }
 </script>
@@ -60,20 +70,19 @@ export default {
   align-items: center;
   text-align: center;
 }
-.img-model1 {
+
+.model1-imgs {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 1fr);
-  gap : 10px;
+  gap: 10px;
   justify-content: center;
   align-items: center;
   text-align: center;
   width: 50%;
-
-
 }
 
-.img-model1 img{
+.model1-imgs img{
   text-align: center;
   height: auto;
   width: 100%;
@@ -81,7 +90,8 @@ export default {
   align-items: center;
   transition: transform 0.2s;
 }
-.img-model1 img:hover{
+.model1-imgs img:hover{
   transform: scale(0.9);
+  cursor: pointer;
 }
 </style>

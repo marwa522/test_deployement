@@ -1,6 +1,7 @@
 <template>
   <body >
-  <router-view/>
+  <router-view/cd f>
+  <!--test/-->
   </body>
 
 </template>

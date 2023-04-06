@@ -1,35 +1,55 @@
 <template>
-  <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-    Voir l'image
-  </button>
-
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel">Titre de l'image</h4>
-        </div>
-        <div class="modal-body">
-          <img src="./public/model2.jpeg" class="img-responsive">
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
-        </div>
-      </div>
+  <div>
+    <div class="d-flex justify-space-around align-center py-4">
+      <v-btn
+          variant="text"
+          icon="mdi-minus"
+          @click="model = Math.max(model - 1, 0)"
+      ></v-btn>
+      {{ model }}
+      <v-btn
+          variant="text"
+          icon="mdi-plus"
+          @click="model = Math.min(model + 1, 4)"
+      ></v-btn>
     </div>
+    <v-carousel v-model="model">
+      <v-carousel-item
+          v-for="(color, i) in colors"
+          :key="color"
+          :value="i"
+      >
+        <v-sheet
+            :color="color"
+            height="100%"
+            tile
+        >
+          <div class="d-flex fill-height justify-center align-center">
+            <div class="text-h2">
+              Slide {{ i + 1 }}
+            </div>
+          </div>
+        </v-sheet>
+      </v-carousel-item>
+    </v-carousel>
   </div>
-
 </template>
 
 <script>
 export default {
-  name: "test"
+  data () {
+    return {
+      colors: [
+        'primary',
+        'secondary',
+        'yellow darken-2',
+        'red',
+        'orange',
+      ],
+      model: 0,
+    }
+  },
+  // eslint-disable-next-line vue/multi-word-component-names
+  name: 'test',
 }
 </script>
-
-<style scoped>
-
-</style>

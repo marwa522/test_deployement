@@ -162,6 +162,8 @@ export default {
   flex-direction: row;
   align-items: center;
   list-style-type: none;
+  text-align: center;
+  justify-content: center;
 }
 .event-img, .model-img {
   height: 400px;
@@ -172,6 +174,9 @@ export default {
   padding: 0;
   box-sizing: content-box;
   font-size: larger;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
 }
 #titre-event{
   text-align: center;
