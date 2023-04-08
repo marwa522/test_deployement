@@ -1,21 +1,22 @@
 <template>
-  <body >
-  <router-view/cd f>
-  <!--test/-->
-  </body>
-
+  <!--v-app>
+    <v-main>
+      <router-view/>
+    </v-main>
+  </v-app-->
+  <test-selecty/>
 </template>
 
 <script>
-import Accueil from './views/Accueil.vue';
-import Creations from './views/Creations.vue';
-import test from './views/test.vue';
-
+import Carouselimg from "@/components/Carouselimg.vue";
+import testOverlay from "@/views/testSelecty.vue";
+import TestSelecty from "@/views/testSelecty.vue";
 export default {
-  components: {
-    Accueil,
-    Creations,
-    test
+  name: 'App',
+  components : {
+    TestSelecty,
+    Carouselimg,
+    testOverlay
   }
 }
 </script>

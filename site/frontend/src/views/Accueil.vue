@@ -21,55 +21,19 @@
     <div class="kaborimage">
       <div id="kabodium">
         <h1 id="titre-event">Kabori sur un podium</h1>
-        <ul class="event-imgs">
-          <li>
-            <img src="chevronGauche.jpg" alt="flèche vers la gauche" width="75px" height="75px">
-          </li>
-          <li>
-            <img src="model1.jpeg" alt="model1" class="event-img">
-          </li>
-          <li>
-            <img src="model2.jpeg" alt="model2" class="event-img">
-          </li>
-          <li>
-            <img src="model3.jpeg" alt="model3" class="event-img">
-          </li>
-          <li>
-            <img src="model4.jpeg" alt="model4" class="event-img">
-          </li>
-          <li>
-            <img src="model5.jpeg" alt="model5" class="event-img">
-          </li>
-          <li>
-            <img src="chevronDroite.png" alt="flèche à droite" width="75px" height="75px">
-          </li>
-        </ul>
+        <v-carousel v-model="model1" show-arrows="hover" cycle hide-delimiter-background>
+          <v-carousel-item v-for="image in images1" :value="image.id"  :key="image.id">
+            <v-img :src="image.url" />
+          </v-carousel-item>
+        </v-carousel>
       </div>
       <div id="kaborcreation">
         <h1 id="titre-event">Nos créations</h1>
-        <ul class="model-imgs">
-          <li>
-            <img src="chevronGauche.jpg" alt="flèche vers la gauche" width="75px" height="75px">
-          </li>
-          <li>
-            <img src="model1.jpeg" alt="model1" class="model-img">
-          </li>
-          <li>
-            <img src="model2.jpeg" alt="model2" class="model-img">
-          </li>
-          <li>
-            <img src="model3.jpeg" alt="model3" class="model-img">
-          </li>
-          <li>
-            <img src="model4.jpeg" alt="model4" class="model-img">
-          </li>
-          <li>
-            <img src="model5.jpeg" alt="model5" class="model-img">
-          </li>
-          <li>
-            <img src="chevronDroite.png" alt="flèche à droite" width="75px" height="75px">
-          </li>
-        </ul>
+        <v-carousel v-model="model2" show-arrows="hover" cycle hide-delimiter-background>
+          <v-carousel-item v-for="image in images1" :value="image.id"  :key="image.id">
+            <v-img :src="image.url" />
+          </v-carousel-item>
+        </v-carousel>
 
       </div>
     </div>
@@ -86,6 +50,26 @@ import 'aos/dist/aos.css';
 import BasDePage from "@/components/BasDePage.vue";
 import Entete from "@/components/Entete.vue";
 export default {
+  data() {
+    return {
+      images1: [
+        { id: 1, url: 'model1.jpeg' },
+        { id: 2, url: 'model2.jpeg' },
+        { id: 3, url: 'model3.jpeg' },
+        { id: 4, url: 'model4.jpeg' }
+      ],
+      model1: 1,
+      overlay: false,
+      overlayImg:"",
+      images2: [
+        { id: 1, url: 'model4.jpeg' },
+        { id: 2, url: 'model3.jpeg' },
+        { id: 3, url: 'model2.jpeg' },
+        { id: 4, url: 'model1.jpeg' }
+      ],
+      model2: 2,
+    }
+  },
   // eslint-disable-next-line vue/multi-word-component-names
   name: 'Accueil',
   components: {
@@ -99,11 +83,7 @@ export default {
       easing: 'ease-in-out',
       delay: 100,
     });
-  },
-  computed: {
-    ...mapGetters(['corps'])
   }
-
 }
 
 </script>
@@ -123,7 +103,7 @@ export default {
 
 .pr-text1 {
   position: absolute; /* positionnement absolu par rapport au conteneur parent */
-  top: 75%; /* positionne le haut du conteneur à la moitié de l'image */
+  top: 25%; /* positionne le haut du conteneur à la moitié de l'image */
   left: 25%; /* positionne la gauche du conteneur à la moitié de l'image */
   background-color: rgba(255, 255, 255, 0.1); /* ajoute un fond semi-transparent pour le texte */
   padding: 10px; /* ajoute un peu d'espace autour du texte */
@@ -138,7 +118,7 @@ export default {
 }
 .pr-text2{
   position: absolute; /* positionnement absolu par rapport au conteneur parent */
-  top: 150%; /* positionne le haut du conteneur à la moitié de l'image */
+  top: 50%; /* positionne le haut du conteneur à la moitié de l'image */
   right: 0.75%; /* positionne la gauche du conteneur à la moitié de l'image */
   background-color: rgba(255, 255, 255, 0.1); /* ajoute un fond semi-transparent pour le texte */
   padding: 5px; /* ajoute un peu d'espace autour du texte */

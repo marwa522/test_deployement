@@ -54,7 +54,8 @@ const routes= [
     name: 'Cookies',
     component: () =>
         import('../views/Cookies.vue')
-  }
+  },
+
 ]
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
