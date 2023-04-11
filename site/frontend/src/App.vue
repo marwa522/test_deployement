@@ -1,10 +1,10 @@
 <template>
-  <!--v-app>
+  <v-app>
     <v-main>
       <router-view/>
     </v-main>
-  </v-app-->
-  <test-selecty/>
+  </v-app>
+  <!--test-selecty/-->
 </template>
 
 <script>

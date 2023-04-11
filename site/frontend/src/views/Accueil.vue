@@ -22,16 +22,16 @@
       <div id="kabodium">
         <h1 id="titre-event">Kabori sur un podium</h1>
         <v-carousel v-model="model1" show-arrows="hover" cycle hide-delimiter-background>
-          <v-carousel-item v-for="image in images1" :value="image.id"  :key="image.id">
-            <v-img :src="image.url" />
+          <v-carousel-item v-for="photo in photoevent" :value="photo.idPhotoEvent"  :key="photo.idPhotoEvent">
+            <v-img :src="photo.urlPhoto" />
           </v-carousel-item>
         </v-carousel>
       </div>
       <div id="kaborcreation">
         <h1 id="titre-event">Nos créations</h1>
         <v-carousel v-model="model2" show-arrows="hover" cycle hide-delimiter-background>
-          <v-carousel-item v-for="image in images1" :value="image.id"  :key="image.id">
-            <v-img :src="image.url" />
+          <v-carousel-item v-for="photo in photocreations" :value="photo.idPhotoCreations"  :key="photo.idPhotoCreations">
+            <v-img :src="photo.urlPhotoCreations" />
           </v-carousel-item>
         </v-carousel>
 
@@ -45,22 +45,18 @@
 
 <script>
 import AOS from 'aos';
-import { mapGetters } from 'vuex';
+import axios from 'axios';
 import 'aos/dist/aos.css';
 import BasDePage from "@/components/BasDePage.vue";
 import Entete from "@/components/Entete.vue";
 export default {
   data() {
     return {
-      images1: [
-        { id: 1, url: 'model1.jpeg' },
-        { id: 2, url: 'model2.jpeg' },
-        { id: 3, url: 'model3.jpeg' },
-        { id: 4, url: 'model4.jpeg' }
-      ],
+      photoevent:[],
       model1: 1,
       overlay: false,
       overlayImg:"",
+      photocreations:[],
       images2: [
         { id: 1, url: 'model4.jpeg' },
         { id: 2, url: 'model3.jpeg' },
@@ -83,6 +79,29 @@ export default {
       easing: 'ease-in-out',
       delay: 100,
     });
+    this.recuphotoevent();
+    this.recuphotocreations();
+  },
+  methods: {
+    recuphotoevent() {
+      axios.get('http://localhost:3000/photoevent')
+          .then(response => {
+            this.photoevent = response.data;
+          })
+          .catch(error => {
+            console.error('Erreur lors de la récupération des photos des événéments :', error);
+          })
+    },
+    recuphotocreations() {
+      axios.get('http://localhost:3000/photocreations')
+          .then(response => {
+            this.photocreations = response.data;
+          })
+          .catch(error => {
+            console.error('Erreur lors de la récupération des photos de créations :', error);
+          })
+    }
+
   }
 }
 
