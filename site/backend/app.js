@@ -6,6 +6,11 @@ const mysql = require('mysql');
 
 const cors = require('cors');
 
+const eventRoutes = require('./routes/photoevents');
+
+const creationsRoutes = require('./routes/photocreations');
+
+
 const con = mysql.createConnection({
   host: "localhost",
   user: "root",
@@ -28,32 +33,13 @@ const corsOptions = {
   methods: 'GET, POST, PUT, DELETE, PATCH, OPTIONS', // Spécifier les méthodes autorisées
   allowedHeaders: 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization', // Spécifier les en-têtes autorisés
 };
-app.get('/photoevent', (req, res) => {
-  // Obtenir une connexion à partir de la pool
-  pool.getConnection((err, con) => {
-    if (err) throw err;
-    con.query("SELECT * FROM tbphotoevent", (err, result, fields) => {
-      // Libérer la connexion une fois la requête terminée
-      con.release();
-      if (err) throw err;
-      res.json(result);
-    });
-  });
-});
-app.get('/photocreations', (req, res) => {
-
-  pool.getConnection((err, con) => {
-    if (err) throw err;
-    con.query("SELECT * FROM tbphotocreations", (err, result, fields) => {
-      con.release();
-      if (err) throw err;
-      res.json(result);
-    });
-  });
-});
-
 
 // Activer CORS avec les options configurées pour toutes les requêtes
 app.use(cors(corsOptions));
+
+//Différents appels API
+app.use('/photoevents', eventRoutes);
+app.use('/photocreations',creationsRoutes);
+
 app.use(express.json());
 module.exports = app;

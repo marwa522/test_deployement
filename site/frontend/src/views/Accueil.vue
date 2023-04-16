@@ -22,16 +22,16 @@
       <div id="kabodium">
         <h1 id="titre-event">Kabori sur un podium</h1>
         <v-carousel v-model="model1" show-arrows="hover" cycle hide-delimiter-background>
-          <v-carousel-item v-for="photo in photoevent" :value="photo.idPhotoEvent"  :key="photo.idPhotoEvent">
-            <v-img :src="photo.urlPhoto" />
+          <v-carousel-item v-for="photo in photoevent" :value="photo.id"  :key="photo.id">
+            <v-img :src="photo.url" />
           </v-carousel-item>
         </v-carousel>
       </div>
       <div id="kaborcreation">
         <h1 id="titre-event">Nos créations</h1>
         <v-carousel v-model="model2" show-arrows="hover" cycle hide-delimiter-background>
-          <v-carousel-item v-for="photo in photocreations" :value="photo.idPhotoCreations"  :key="photo.idPhotoCreations">
-            <v-img :src="photo.urlPhotoCreations" />
+          <v-carousel-item v-for="photo in photocreations" :value="photo.id"  :key="photo.id">
+            <v-img :src="photo.url" />
           </v-carousel-item>
         </v-carousel>
 
@@ -79,12 +79,12 @@ export default {
       easing: 'ease-in-out',
       delay: 100,
     });
-    this.recuphotoevent();
+    this.recuphotoevents();
     this.recuphotocreations();
   },
   methods: {
-    recuphotoevent() {
-      axios.get('http://localhost:3000/photoevent')
+    recuphotoevents() {
+      axios.get('http://localhost:3000/photoevents')
           .then(response => {
             this.photoevent = response.data;
           })
@@ -131,7 +131,7 @@ export default {
   height:175px;
   font-size: xx-large ;
   margin-top: 50px;
-  border: 1px solid black;
+  border: 1px;
   width: 80%;
   max-width: 800px;
 }
@@ -146,7 +146,7 @@ export default {
   height:350px;
   font-size: xx-large ;
   margin-top: 50px;
-  border: 1px solid black;
+  border: 1px;
   width: 100%;
   max-width: 1500px;
 }
