@@ -7,10 +7,10 @@ const pool = mysql.createPool({
     connectionLimit: 10 // Nombre maximal de connexions dans la pool
 });
 
-exports.getPhotocreations = (req, res) => {
+exports.getCollections = (req, res) => {
     pool.getConnection((err, con) => {
         if (err) throw err;
-        con.query("SELECT * FROM photocreations", (err, result, fields) => {
+        con.query("SELECT * FROM collections", (err, result, fields) => {
             con.release();
             if (err) throw err;
             res.json(result);
@@ -18,17 +18,16 @@ exports.getPhotocreations = (req, res) => {
     });
 };
 
-exports.postPhotocreations = (req, res) => {
+exports.postCollections = (req, res) => {
     // Récupération des valeurs depuis le corps de la requête
-    const url = req.body.url;
     const description = req.body.description;
     const nom = req.body.nom;
 
     // Requête d'insertion avec des valeurs paramétrées pour éviter les attaques par injection SQL
-    const sql = "INSERT INTO photocreations (url, description, nom) VALUES (?, ?, ?)";
+    const sql = "INSERT INTO collections (nom, description) VALUES (?, ?)";
     pool.getConnection((err, con) => {
         if (err) throw err;
-        con.query(sql, [url, description, nom], (err, result, fields) => {
+        con.query(sql, [nom, description], (err, result, fields) => {
             con.release();
             if (err) throw err;
             res.json(result);
@@ -36,12 +35,12 @@ exports.postPhotocreations = (req, res) => {
     });
 };
 
-exports.deletePhotocreations = (req, res) => {
+exports.deleteCollections = (req, res) => {
     // Récupération des valeurs depuis le corps de la requête
-    const nom = req.params.nom;
+    const nom = req.body.nom;
 
     // Suppression sur base du nom
-    const sql = "DELETE FROM photocreations WHERE nom = (?)";
+    const sql = "DELETE FROM collections WHERE nom = (?)";
     pool.getConnection((err, con) => {
         if (err) throw err;
         con.query(sql, [nom], (err, result, fields) => {

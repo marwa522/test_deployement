@@ -1,7 +1,7 @@
 // modèle de client"
 
 class client {
-    constructor(nom, prenom, adresse, email, num, motdepasse) {cd ba
+    constructor(nom, prenom, adresse, email, num, motdepasse) {
         this.nom = nom;
         this.prenom = prenom;
         this.adresse = adresse

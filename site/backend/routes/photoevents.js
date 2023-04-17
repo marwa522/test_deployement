@@ -5,5 +5,7 @@ const photoeventsCtrl = require('../controllers/photoevents');
 
 
 router.get('/',photoeventsCtrl.getPhotoevents );
+router.post('/',photoeventsCtrl.postPhotoevents );
+router.delete('/',photoeventsCtrl.deletePhotoevents );
 
 module.exports = router;

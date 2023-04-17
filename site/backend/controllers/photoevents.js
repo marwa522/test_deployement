@@ -19,3 +19,37 @@ exports.getPhotoevents = (req, res) => {
         });
     });
 };
+
+exports.postPhotoevents = (req, res) => {
+    // Récupération des valeurs depuis le corps de la requête
+    const url = req.body.url;
+    const description = req.body.description;
+    const nom = req.body.nom;
+
+    // Requête d'insertion avec des valeurs paramétrées pour éviter les attaques par injection SQL
+    const sql = "INSERT INTO photoevents (url, description, nom) VALUES (?, ?, ?)";
+    pool.getConnection((err, con) => {
+        if (err) throw err;
+        con.query(sql, [url, description, nom], (err, result, fields) => {
+            con.release();
+            if (err) throw err;
+            res.json(result);
+        });
+    });
+};
+
+exports.deletePhotoevents = (req, res) => {
+    // Récupération des valeurs depuis le corps de la requête
+    const nom = req.body.nom;
+
+    // Suppression sur base du nom
+    const sql = "DELETE FROM photoevents WHERE nom = (?)";
+    pool.getConnection((err, con) => {
+        if (err) throw err;
+        con.query(sql, [nom], (err, result, fields) => {
+            con.release();
+            if (err) throw err;
+            res.json(result);
+        });
+    });
+};

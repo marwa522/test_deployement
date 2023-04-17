@@ -1,14 +1,20 @@
 const express = require('express');
 
+const bodyParser = require('body-parser');
+
 const app = express();
 
 const mysql = require('mysql');
 
 const cors = require('cors');
 
+app.use(bodyParser.json());
+
 const eventRoutes = require('./routes/photoevents');
 
 const creationsRoutes = require('./routes/photocreations');
+
+const collectionsRoutes = require('./routes/collections')
 
 
 const con = mysql.createConnection({
@@ -40,6 +46,7 @@ app.use(cors(corsOptions));
 //Différents appels API
 app.use('/photoevents', eventRoutes);
 app.use('/photocreations',creationsRoutes);
+app.use('/collections',collectionsRoutes);
 
 app.use(express.json());
 module.exports = app;
