@@ -1,6 +1,6 @@
 <template>
   <header>
-    <Entete/>
+    <Entete :variable-exportee="selectedCol"/>
   </header>
   <main class="background-image">
     <h1>Titre collection</h1>
@@ -61,11 +61,12 @@
 <script>
 import Entete from "@/components/Entete.vue";
 import BasDePage from "@/components/BasDePage.vue";
-import Carouselimg from "@/App.vue";
+import axios from 'axios';
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   data() {
     return {
+      selectedCol : null,
       images1: [
         { id: 1, url: 'model1.jpeg' },
         { id: 2, url: 'model2.jpeg' },
@@ -84,10 +85,10 @@ export default {
       model2: 2,
     }
   },
+
   // eslint-disable-next-line vue/multi-word-component-names
   name: "Creations",
   components:{
-    Carouselimg,
     Entete,
     BasDePage,
   },

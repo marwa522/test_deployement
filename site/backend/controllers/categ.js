@@ -7,10 +7,10 @@ const pool = mysql.createPool({
     connectionLimit: 10 // Nombre maximal de connexions dans la pool
 });
 
-exports.getCollections = (req, res) => {
+exports.getCateg = (req, res) => {
     pool.getConnection((err, con) => {
         if (err) throw err;
-        con.query("SELECT * FROM collections", (err, result, fields) => {
+        con.query("SELECT * FROM categ", (err, result, fields) => {
             con.release();
             if (err) throw err;
             res.json(result);
@@ -18,13 +18,13 @@ exports.getCollections = (req, res) => {
     });
 };
 
-exports.postCollections = (req, res) => {
+exports.postCateg = (req, res) => {
     // Récupération des valeurs depuis le corps de la requête
     const description = req.body.description;
     const nom = req.body.nom;
 
     // Requête d'insertion avec des valeurs paramétrées pour éviter les attaques par injection SQL
-    const sql = "INSERT INTO collections (nom, description) VALUES (?, ?)";
+    const sql = "INSERT INTO categ (nom, description) VALUES (?, ?)";
     pool.getConnection((err, con) => {
         if (err) throw err;
         con.query(sql, [nom, description], (err, result, fields) => {
@@ -35,12 +35,12 @@ exports.postCollections = (req, res) => {
     });
 };
 
-exports.deleteCollections = (req, res) => {
+exports.deleteCateg = (req, res) => {
     // Récupération des valeurs depuis le corps de la requête
     const nom = req.body.nom;
 
     // Suppression sur base du nom
-    const sql = "DELETE FROM collections WHERE nom = (?)";
+    const sql = "DELETE FROM categ WHERE nom = (?)";
     pool.getConnection((err, con) => {
         if (err) throw err;
         con.query(sql, [nom], (err, result, fields) => {
@@ -51,19 +51,19 @@ exports.deleteCollections = (req, res) => {
     });
 };
 
-exports.updateCollections = (req, res) => {
+exports.updateCateg = (req, res) => {
     // Récupération des valeurs depuis le corps de la requête
-    const nomAct = req.body.nom
+    const nomCateg = req.body.nom
     const valMisAJour = {
         nom : req.body.nom,
         description : req.body.description
     }
 
     // Suppression sur base du nom
-    const sql = "UPDATE collections SET ? WHERE nom = (?)";
+    const sql = "UPDATE categ SET ? WHERE nom = (?)";
     pool.getConnection((err, con) => {
         if (err) throw err;
-        con.query(sql, [valMisAJour, nomAct], (err, result, fields) => {
+        con.query(sql, [valMisAJour, nomCateg], (err, result, fields) => {
             con.release();
             if (err) throw err;
             res.json(result);

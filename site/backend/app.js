@@ -14,7 +14,11 @@ const eventRoutes = require('./routes/photoevents');
 
 const creationsRoutes = require('./routes/photocreations');
 
-const collectionsRoutes = require('./routes/collections')
+const collectionsRoutes = require('./routes/collections');
+
+const categRoutes = require('./routes/categ');
+
+const prodRoutes = require('./routes/produits');
 
 
 const con = mysql.createConnection({
@@ -47,6 +51,8 @@ app.use(cors(corsOptions));
 app.use('/photoevents', eventRoutes);
 app.use('/photocreations',creationsRoutes);
 app.use('/collections',collectionsRoutes);
+app.use('/categ', categRoutes);
+app.use('/prod', prodRoutes)
 
 app.use(express.json());
 module.exports = app;
