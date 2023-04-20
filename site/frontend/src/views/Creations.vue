@@ -2,31 +2,32 @@
   <header>
     <Entete/>
   </header>
-  <main class="background-image">
-    <div class="collection" v-for="collection in collections" :value="collection.id"  :key="collection.id" >
+  <main class="backgroundImage">
+    <div class="collection" v-for="collection in collections"   :key="collection.id" >
       <h1><button @click="thisCollection = collection.nom, recupModels();" @dblclick="thisCollection = ''" >{{ collection.nom }}</button></h1>
       <p>{{ collection.description }}</p> <br><br>
 
 
-      <div class="model1" v-for="model in models" :value="model.id" v-bind:key="model.id"  v-if="thisCollection === collection.nom" >
+      <div class="model" v-for="model in models" v-bind:key="model.id"  v-if="thisCollection === collection.nom" >
         <h2 ><button @click="thisModel = model, recuPhoto();" @dblclick="thisModel= ''">{{model.nom}}</button></h2>
-        <p class="desc-model1">
+        <p class="descModel">
           {{model.description}}
         </p><br>
-        <div class="img-model1">
+        <div class="imgModel">
           <div class="photo" v-for="photo in photos"  :key="photo.id"  v-if="thisModel.nom === model.nom">
             <button @click="overlay = !overlay; overlayImg=photo" >
               <img :src=photo alt="image1"/>
             </button>
+
             <v-overlay v-if="overlay" v-model="overlay"  class="overlay">
               <button @click="overlay = !overlay">
-                <img :src=overlayImg alt="image1" class="overlay-img"/>
+                <img :src=overlayImg alt="image1" class="overlayImg"/>
               </button>
             </v-overlay>
+
           </div>
-
         </div>
-
+        <p class="prix">{{model.prix}}€</p>
       </div>
       <br><hr><br>
     </div>
@@ -78,7 +79,10 @@ export default {
     },
     recupModels() {
 
-      axios.get('http://localhost:3000/prod/' + this.thisCollection )
+      axios.get('http://localhost:3000/prod/' ,{
+        params:{
+          col: this.thisCollection
+        }})
           .then(response => {
             this.models = response.data;
           })
@@ -114,20 +118,20 @@ export default {
 </script>
 
 <style scoped>
-/*.background-image{
+/*.backgroundImage{
   background-image: url('model2.jpeg');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
 }*/
-.model1, .model2{
+.model{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
 }
-.desc-model1, .desc-model2{
+.descModel{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -143,7 +147,7 @@ h1,h2, p {
   margin-right: 20%;
 }
 
-.img-model1,.img-model2 {
+.imgModel{
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 1fr);
@@ -156,7 +160,7 @@ h1,h2, p {
 
 }
 
-.img-model1 img, .img-model2 img {
+.imgModel img{
   text-align: center;
   height: auto;
   width: 100%;
@@ -165,7 +169,7 @@ h1,h2, p {
   transition: transform 0.2s;
 }
 
-.img-model1 img:hover, .img-model2 img:hover {
+.imgModel img:hover{
   transform: scale(0.9);
 }
 .photo{
@@ -173,7 +177,7 @@ h1,h2, p {
   justify-content: center;
   align-content: center;
 }
-.overlay-img{
+.overlayImg{
   height: auto;
   width: 35%;
   justify-content: center;
@@ -186,5 +190,10 @@ h1,h2, p {
   width: 100%;
   justify-content: center;
   align-items: center;
+}
+.prix{
+  align-content: center;
+  justify-content: center;
+  text-align: center;
 }
 </style>
