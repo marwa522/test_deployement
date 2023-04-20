@@ -7,10 +7,23 @@ const pool = mysql.createPool({
     connectionLimit: 10 // Nombre maximal de connexions dans la pool
 });
 
-exports.getProd = (req, res) => {
+/*exports.getAllProd = (req, res) => {
     pool.getConnection((err, con) => {
         if (err) throw err;
         con.query("SELECT * FROM produits", (err, result, fields) => {
+            con.release();
+            if (err) throw err;
+            res.json(result);
+        });
+    });
+};*/
+
+exports.getColProd = (req, res) => {
+    const col = req.params.col
+
+    pool.getConnection((err, con) => {
+        if (err) throw err;
+        con.query("SELECT * FROM produits WHERE collection = ?", [col], (err, result, fields) => {
             con.release();
             if (err) throw err;
             res.json(result);

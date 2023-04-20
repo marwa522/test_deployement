@@ -1,56 +1,36 @@
 <template>
   <header>
-    <Entete :variable-exportee="selectedCol"/>
+    <Entete/>
   </header>
   <main class="background-image">
-    <h1>Titre collection</h1>
-    <p>Ici se trouvera le texte descriptif de la collection</p> <br><br>
+    <div class="collection" v-for="collection in collections" :value="collection.id"  :key="collection.id" >
+      <h1><button @click="thisCollection = collection.nom, recupModels();" @dblclick="thisCollection = ''" >{{ collection.nom }}</button></h1>
+      <p>{{ collection.description }}</p> <br><br>
 
 
-    <div class="model1">
-      <h2>Model1</h2>
-      <p class="desc-model1">
-        Qu'est-ce que le Lorem Ipsum?
-        Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.
-      </p><br>
-      <div class="img-model1">
-        <div class="photo" v-for="image in images1"  :key="image.id" >
-          <button @click="overlay = !overlay; overlayImg=image.url" >
-            <img :src=image.url alt="image1"/>
-          </button>
-          <v-overlay v-if="overlay" v-model="overlay"  class="overlay">
-            <button @click="overlay = !overlay">
-              <img :src=overlayImg alt="image1" class="overlay-img"/>
+      <div class="model1" v-for="model in models" :value="model.id" v-bind:key="model.id"  v-if="thisCollection === collection.nom" >
+        <h2 ><button @click="thisModel = model, recuPhoto();" @dblclick="thisModel= ''">{{model.nom}}</button></h2>
+        <p class="desc-model1">
+          {{model.description}}
+        </p><br>
+        <div class="img-model1">
+          <div class="photo" v-for="photo in photos"  :key="photo.id"  v-if="thisModel.nom === model.nom">
+            <button @click="overlay = !overlay; overlayImg=photo" >
+              <img :src=photo alt="image1"/>
             </button>
-          </v-overlay>
+            <v-overlay v-if="overlay" v-model="overlay"  class="overlay">
+              <button @click="overlay = !overlay">
+                <img :src=overlayImg alt="image1" class="overlay-img"/>
+              </button>
+            </v-overlay>
+          </div>
+
         </div>
 
       </div>
-
+      <br><hr><br>
     </div>
-    <br><hr><br>
-    <div class="model2">
-      <h2>Model2</h2>
-      <p class="desc-model2">
-        Qu'est-ce que le Lorem Ipsum?
-        Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.
-      </p><br>
-      <div class="img-model2">
-        <div class="photo" v-for="image in images2"  :key="image.id" >
-          <button @click="overlay = !overlay; overlayImg=image.url" >
-            <img :src=image.url alt="image1"/>
-          </button>
-          <v-overlay v-if="overlay" v-model="overlay" class="overlay">
-            <button @click="overlay = !overlay">
-              <img :src=overlayImg alt="image1" class="overlay-img"/>
-            </button>
-          </v-overlay>
-        </div>
 
-      </div>
-
-    </div>
-    <br><hr><br>
 
   </main>
   <footer >
@@ -66,7 +46,11 @@ export default {
   // eslint-disable-next-line vue/multi-word-component-names
   data() {
     return {
-      selectedCol : null,
+      collections : [],
+      thisCollection : '',
+      models : [],
+      thisModel:"",
+      photos : [],
       images1: [
         { id: 1, url: 'model1.jpeg' },
         { id: 2, url: 'model2.jpeg' },
@@ -76,15 +60,42 @@ export default {
       model1: 1,
       overlay: false,
       overlayImg:"",
-      images2: [
-        { id: 1, url: 'model4.jpeg' },
-        { id: 2, url: 'model3.jpeg' },
-        { id: 3, url: 'model2.jpeg' },
-        { id: 4, url: 'model1.jpeg' }
-      ],
-      model2: 2,
     }
   },
+
+  mounted() {
+    this.recupCollections();
+  },
+  methods: {
+    recupCollections() {
+      axios.get('http://localhost:3000/collections')
+          .then(response => {
+            this.collections = response.data;
+          })
+          .catch(error => {
+            console.error('Erreur lors de la récupération de la liste des collections :', error);
+          })
+    },
+    recupModels() {
+
+      axios.get('http://localhost:3000/prod/' + this.thisCollection )
+          .then(response => {
+            this.models = response.data;
+          })
+          .catch(error => {
+            console.error('Erreur lors de la récupération de la liste des modèles:', error);
+          })
+    },
+    recuPhoto(){
+      this.photos = [];
+      this.photos.push(this.thisModel.photo1);
+      this.photos.push(this.thisModel.photo2);
+      this.photos.push(this.thisModel.photo3);
+      this.photos.push(this.thisModel.photo4);
+    }
+  },
+
+  // e
 
   // eslint-disable-next-line vue/multi-word-component-names
   name: "Creations",

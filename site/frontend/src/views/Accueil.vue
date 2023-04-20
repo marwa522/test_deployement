@@ -129,7 +129,7 @@ export default {
   color : white;
   text-align: center;
   height:175px;
-  font-size: xx-large ;
+  font-size: xxx-large ;
   margin-top: 50px;
   border: 1px;
   width: 80%;
@@ -156,27 +156,7 @@ export default {
   align-items: center;
   font-family: "Cambria Math";
 }
-.event-imgs, .model-imgs{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  list-style-type: none;
-  text-align: center;
-  justify-content: center;
-}
-.event-img, .model-img {
-  height: 400px;
-  width: 257px;
-  display: flex;
-  list-style: none;
-  margin: 5px;
-  padding: 0;
-  box-sizing: content-box;
-  font-size: larger;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-}
+
 #titre-event{
   text-align: center;
   font-family: "Cambria Math";

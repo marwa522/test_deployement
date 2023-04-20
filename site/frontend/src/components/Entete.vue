@@ -5,23 +5,7 @@
       <nav class="navbar">
         <ul class="nav-list">
           <li ><router-link to="/" class="no-underline">Accueil</router-link></li>
-          <li ><router-link to="/creations" class="no-underline">
-            <div class="text-center">
-              <v-menu open-on-hover>
-                <template v-slot:activator="{ props }">
-                  <v-btn v-bind="props" color="black">
-                    Nos Créations
-                  </v-btn>
-                </template>
-
-                <v-list>
-                  <v-list-item v-for="(item, index) in collections" :key="index">
-                    <v-list-item-title @click="selectedCol= item.nom " >{{ item.nom }}</v-list-item-title>
-                  </v-list-item>
-                </v-list>
-              </v-menu>
-            </div>
-          </router-link></li>
+          <li ><router-link to="/creations" class="no-underline">Nos créations</router-link></li>
           <li ><router-link to="/services" class="no-underline">Nos services</router-link></li>
           <li ><router-link to="/marque" class="no-underline">La marque</router-link></li>
           <li ><router-link to="/contact" class="no-underline">Nous contacter</router-link></li>
