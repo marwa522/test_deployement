@@ -17,29 +17,7 @@
 </template>
 
 <script>
-import axios from 'axios';
 export default {
-  data(){
-    return{
-      collections : [],
-      nomCol: [],
-      selectedCol : null,
-    }
-  },
-  mounted() {
-    this.recupCollections();
-  },
-  methods: {
-    recupCollections() {
-      axios.get('http://localhost:3000/collections')
-          .then(response => {
-            this.collections = response.data;
-          })
-          .catch(error => {
-            console.error('Erreur lors de la récupération de la liste des collections :', error);
-          })
-    }
-  },
   // eslint-disable-next-line vue/multi-word-component-names
   name: "Entete",
 }
