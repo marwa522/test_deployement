@@ -4,19 +4,21 @@
         <div class="row">
             <div class="col-md-6">
                 <h3>Informations de contact</h3>
-                <p><strong>Adresse:</strong> {{contactInfo.address}}</p>
-                <p><strong>Téléphone:</strong> {{contactInfo.phone}}</p>
-                <p><strong>Email:</strong> {{contactInfo.email}}</p>
-                <h3>Suivez-nous</h3>
-                <div class="social-media">
-                    <a :href="contactInfo.facebook"><i class="fab fa-facebook"></i></a>
-                    <a :href="contactInfo.twitter"><i class="fab fa-twitter"></i></a>
-                    <a :href="contactInfo.instagram"><i class="fab fa-instagram"></i></a>
+                <div class="contact-info">
+                    <p><strong>Adresse:</strong> {{contactInfo.address}}</p>
+                    <p><strong>Téléphone:</strong> {{contactInfo.phone}}</p>
+                    <p><strong>Email:</strong> {{contactInfo.email}}</p>
+                    <h3>Suivez-nous</h3>
+                    <div class="social-media">
+                        <a :href="contactInfo.facebook"><i class="fab fa-facebook"></i></a>
+                        <a :href="contactInfo.twitter"><i class="fab fa-twitter"></i></a>
+                        <a :href="contactInfo.instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
                 </div>
             </div>
             <div class="col-md-6">
                 <h3>Nous envoyer un message</h3>
-                <form @submit.prevent="submitForm">
+                <form @submit.prevent="submitForm" class="contact-form">
                     <div class="form-group">
                         <label for="name">Nom</label>
                         <input type="text" class="form-control" id="name" v-model="form.name" required>
@@ -77,3 +79,22 @@ export default {
     }
 }
 </script>
+
+ <style>
+
+.contact-info {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.social-media a {
+    margin-right: 10px;
+    color: #fff;
+    background-color: #333;
+    display: inline-block;
+    width: 40px;
+    height: 40px;}  </style>
+
+

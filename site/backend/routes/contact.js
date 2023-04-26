@@ -5,10 +5,10 @@ const nodemailer = require('nodemailer');
 
 // Configuration de la base de données
 const connection = mysql.createPool({
-    host: 'localhost',
-    user: 'root',
-    password: 'yourpassword',
-    database: 'yourdatabase'
+    host: "34.79.25.79",
+    user: "root",
+    password: "admin",
+    database : "siteKabori"
 });
 
 // Route GET pour afficher la page de contact
