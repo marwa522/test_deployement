@@ -2,6 +2,8 @@ const express = require('express');
 
 const bodyParser = require('body-parser');
 
+const path = require('path');
+
 const app = express();
 
 const mysql = require('mysql');
@@ -9,6 +11,8 @@ const mysql = require('mysql');
 const cors = require('cors');
 
 app.use(bodyParser.json());
+
+const contactRouter = require('./routes/contact');
 
 const eventRoutes = require('./routes/photoevents');
 
@@ -21,10 +25,11 @@ const categRoutes = require('./routes/categ');
 const prodRoutes = require('./routes/produits');
 
 
+
 const con = mysql.createConnection({
   host: "34.79.25.79",
   user: "root",
-  password: "Tostos123@",
+  password: "admin",
   database : "siteKabori"
 });
 
@@ -32,7 +37,7 @@ const con = mysql.createConnection({
 const pool = mysql.createPool({
   host: '34.79.25.79',
   user: 'root',
-  password: 'Tostos123@',
+  password: 'admin',
   database: 'siteKabori',
   connectionLimit: 10 // Nombre maximal de connexions dans la pool
 });
@@ -56,3 +61,6 @@ app.use('/prod', prodRoutes)
 
 app.use(express.json());
 module.exports = app;
+
+
+
