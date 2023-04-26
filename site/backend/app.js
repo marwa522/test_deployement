@@ -24,7 +24,7 @@ const prodRoutes = require('./routes/produits');
 const con = mysql.createConnection({
   host: "34.79.25.79",
   user: "root",
-  password: "admin",
+  password: "Tostos123@",
   database : "siteKabori"
 });
 
@@ -32,7 +32,7 @@ const con = mysql.createConnection({
 const pool = mysql.createPool({
   host: '34.79.25.79',
   user: 'root',
-  password: 'admin',
+  password: 'Tostos123@',
   database: 'siteKabori',
   connectionLimit: 10 // Nombre maximal de connexions dans la pool
 });

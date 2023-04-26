@@ -17,5 +17,13 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
-  }
+  },
+  build: {
+      rollupOptions: {
+          external: [
+                'model3.jpeg',
+                "logo1.png"
+            ]
+        }
+    }
 })
