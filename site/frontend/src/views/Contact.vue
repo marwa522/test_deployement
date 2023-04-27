@@ -6,7 +6,7 @@
                 <h2>Contactez-nous</h2>
                 <form @submit.prevent="submitForm">
                     <div class="form-group">
-                        <label for="name">Nom</label>
+                        <label for="name">Nom et Prénom </label>
                         <input type="text" class="form-control" id="name" v-model="form.name" required>
                     </div>
                     <div class="form-group">
@@ -27,10 +27,10 @@
                     <h4>Suivez nous sur : </h4>
                     <div class="social-media-icons">
                         <a href="https://www.facebook.com/yourpage" target="_blank">
-                            <img src="fb.png" alt="Facebook logo" />
+                            <img src="Facebook_icon.svg.png"  alt=" facebook logo" />
                         </a>
                         <a href="https://www.instagram.com/yourpage" target="_blank">
-                            <img src="instagram.avif " alt="Instagram logo" />
+                            <img src="insta.png " alt="Instagram logo" />
                         </a>
                     </div>
                 </div>
@@ -38,7 +38,7 @@
 
                 <div class="col-md-6">
                 <h2>Informations de contact</h2>
-                <p><i class="fas fa-phone-alt"></i> +33 1 23 45 67 89</p>
+                <p><i class="fas fa-phone-alt"></i> +32 1 23 45 67 89</p>
                 <p><i class="fas fa-envelope"></i> info@sitekabori.com</p>
                 </div>
             </div>
@@ -88,6 +88,8 @@ export default {
 
 #contact h2 {
   margin-bottom: 30px;
+    color: rgba(255, 213, 0, 0.99);
+    font-family: Arial, sans-serif;
 }
 
 #contact p {
@@ -118,7 +120,7 @@ export default {
 #contact input[type=tel]:focus,
 #contact textarea:focus {
   outline: none;
-  border-bottom: 2px solid #fb8c00;
+  border-bottom: 2px solid #fba300;
 }
 
 .btn-white {
@@ -131,7 +133,7 @@ export default {
 }
 .btn-primary {
   background-color: white;
-  color: black;
+  color:  black;
   border-radius: 5px;
   padding: 10px 20px;
   font-size: 16px;
@@ -143,6 +145,7 @@ export default {
 .btn-primary:hover {
   background-color: #e6e6e6;
   color: #007bff;
+
 }
 
 
@@ -153,15 +156,16 @@ export default {
 }
 
 .social-media-icons a {
-    margin: 0 10px;
+    margin: 12px 10px;
 }
 
 .social-media-icons img {
-    width: 59px;
-    height: 100px;
+    width: 40px;
+    height: 40px;
 }
 .follow-us {
-    margin-bottom: 50px;
+    margin-bottom: 100px;
+    color: rgb(255,215,0);
 }
 </style>
 
