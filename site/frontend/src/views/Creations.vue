@@ -1,6 +1,6 @@
 <template>
   <header>
-    <Entete/>
+      <Entete/>
   </header>
   <main class="backgroundImage">
     <div class="collection" v-for="collection in collections"   :key="collection.id" >
