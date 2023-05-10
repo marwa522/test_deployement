@@ -1,12 +1,11 @@
 <template>
     <div class="container" id="contact">
-
         <div class="row">
             <div class="col-md-6">
                 <h2>Contactez-nous</h2>
                 <form @submit.prevent="submitForm">
                     <div class="form-group">
-                        <label for="name">Nom et Prénom </label>
+                        <label for="name">Nom et Prénom</label>
                         <input type="text" class="form-control" id="name" v-model="form.name" required>
                     </div>
                     <div class="form-group">
@@ -24,127 +23,145 @@
                     <button type="submit" class="btn btn-primary btn-animate btn-white">Envoyer</button>
                 </form>
                 <div class="mt-5 follow-us">
-                    <h4>Suivez nous sur : </h4>
+                    <h4>Suivez-nous sur :</h4>
                     <div class="social-media-icons">
                         <a href="https://www.facebook.com/yourpage" target="_blank">
-                            <img src="Facebook_icon.svg.png"  alt=" facebook logo" />
+                            <img src="Facebook_icon.svg.png" alt="facebook logo" />
                         </a>
                         <a href="https://www.instagram.com/yourpage" target="_blank">
-                            <img src="insta.png " alt="Instagram logo" />
+                            <img src="insta.png" alt="Instagram logo" />
                         </a>
                     </div>
                 </div>
-
-
-                <div class="col-md-6">
+            </div>
+            <div class="col-md-6">
                 <h2>Informations de contact</h2>
                 <p><i class="fas fa-phone-alt"></i> +32 1 23 45 67 89</p>
                 <p><i class="fas fa-envelope"></i> info@sitekabori.com</p>
-                </div>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-import axios from 'axios'
+
+
+import axios from 'axios';
 
 export default {
-  data() {
-      return {
-          form: {
-              name: '',
-              email: '',
-              phone: '',
-              message: ''
-          }
-      }
-  },
-  methods: {
-      submitForm() {
-          axios.post('/api/contact', this.form)
-              .then(response => {
-                  alert('Votre message a été envoyé avec succès')
-                  this.form.name = ''
-                  this.form.email = ''
-                  this.form.phone = ''
-                  this.form.message = ''
-              })
-              .catch(error => {
-                  console.log(error)
-                  alert('Une erreur est survenue lors de l\'envoi du message')
-              })
-      }
-  }
+    name: 'Contact',
+    data () {
+        return {
+            form: {
+                name: '',
+                email: '',
+                phone: '',
+                message: ''
+            },
+            show: true
+        }
+    },
+    methods: {
+        submitForm (evt) {
+            evt.preventDefault();
+            axios.post('http://localhost:3000/contact', this.form)
+                .then(response => {
+                    console.log(response);
+                    alert('Message envoyé avec succès !');
+                    this.form.name = '';
+                    this.form.email = '';
+                    this.form.phone = '';
+                    this.form.message = '';
+                })
+                .catch(error => {
+                    console.error('Erreur lors de l\'envoi du message:', error);
+                    alert('Erreur lors de l\'envoi du message.');
+                });
+        },
+        onReset (evt) {
+            evt.preventDefault();
+            /* Reset our form values */
+            this.form.name = '';
+            this.form.email = '';
+            this.form.phone = '';
+            this.form.message = '';
+
+            this.show = false;
+            this.$nextTick(() => {
+                this.show = true;
+            });
+        }
+    },
 }
 </script>
 
+
 <style scoped>
 #contact {
-  background-color: black;
-  color: white;
-  padding: 50px;
+    background-color: black;
+    color: white;
+    padding: 50px;
 }
 
 #contact h2 {
-  margin-bottom: 30px;
+    margin-bottom: 30px;
     color: rgba(255, 213, 0, 0.99);
     font-family: Arial, sans-serif;
 }
 
 #contact p {
-  margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 #contact a {
-  color: white;
-  margin-right: 10px;
+    color: white;
+    margin-right: 10px;
 }
 
 #contact input[type=text],
 #contact input[type=email],
 #contact input[type=tel],
 #contact textarea {
-  background-color: transparent;
-  border: none;
-  border-bottom: 2px solid white;
-  color: white;
-  margin-bottom: 20px;
-  width:100%;
-  padding: 10px;
-  font-size: 16px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid white;
+    color: white;
+    margin-bottom: 20px;
+    width:100%;
+    padding: 10px;
+    font-size: 16px;
 }
 
 #contact input[type=text]:focus,
 #contact input[type=email]:focus,
 #contact input[type=tel]:focus,
 #contact textarea:focus {
-  outline: none;
-  border-bottom: 2px solid #fba300;
+    outline: none;
+    border-bottom: 2px solid #fba300;
 }
 
 .btn-white {
-  background-color: white;
-  color: black;
+    background-color: white;
+    color: black;
 }
 
 .form-control {
-  height: 50px;
+    height: 50px;
 }
 .btn-primary {
-  background-color: white;
-  color:  black;
-  border-radius: 5px;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  border: none;
-  transition: all 0.3s ease;
+    background-color: white;
+    color:  black;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease;
 }
 
 .btn-primary:hover {
-  background-color: #e6e6e6;
-  color: #007bff;
+    background-color: #e6e6e6;
+    color: #007bff;
 
 }
 
@@ -168,5 +185,6 @@ export default {
     color: rgb(255,215,0);
 }
 </style>
+
 
 

@@ -16,7 +16,7 @@
         <div class="imgModel">
           <div class="photo" v-for="photo in photos"  :key="photo.id"  v-if="thisModel.nom === model.nom">
             <button @click="overlay = !overlay; overlayImg=photo" >
-              <img :src=photo alt="image1"/>
+              <img :src=photo alt="image1"/>qz
             </button>
 
             <v-overlay v-if="overlay" v-model="overlay"  class="overlay">

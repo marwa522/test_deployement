@@ -19,6 +19,7 @@
     "aos": "^2.3.4",
     "bootstrap": "^5.2.3",
     "bootstrap-vue": "^2.23.1",
+    "esbuild": "^0.17.18",
     "pinia": "^2.0.32",
     "roboto-fontface": "*",
     "vue": "^3.2.47",

@@ -2,17 +2,13 @@ const express = require('express');
 
 const bodyParser = require('body-parser');
 
-const path = require('path');
-
 const app = express();
 
 const mysql = require('mysql');
 
 const cors = require('cors');
 
-app.use(bodyParser.json());
-
-const contactRouter = require('./routes/contact');
+const path = require('path');
 
 const eventRoutes = require('./routes/photoevents');
 
@@ -23,6 +19,13 @@ const collectionsRoutes = require('./routes/collections');
 const categRoutes = require('./routes/categ');
 
 const prodRoutes = require('./routes/produits');
+
+const contactRoutes = require('./routes/contact');
+
+
+//app.use(contactRouter);
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 
 
@@ -53,14 +56,19 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 //Différents appels API
+app.use('/categ', categRoutes);
+app.use('/collections',collectionsRoutes);
 app.use('/photoevents', eventRoutes);
 app.use('/photocreations',creationsRoutes);
-app.use('/collections',collectionsRoutes);
-app.use('/categ', categRoutes);
-app.use('/prod', prodRoutes)
+app.use('/prod', prodRoutes);
+app.use('/contact', contactRoutes);
+
 
 app.use(express.json());
 module.exports = app;
+
+
+
 
 
 
