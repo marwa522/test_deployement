@@ -1,4 +1,8 @@
 <template>
+  <header>
+    <Entete/>
+  </header>
+  <main>
     <div class="container" id="contact">
         <div class="row">
             <div class="col-md-6">
@@ -41,15 +45,25 @@
             </div>
         </div>
     </div>
+  </main>
+  <footer>
+    <BasDePage/>
+  </footer>
 </template>
 
 <script>
 
 
 import axios from 'axios';
+import BasDePage from "@/components/BasDePage.vue";
+import Entete from "@/components/Entete.vue";
 
 export default {
     name: 'Contact',
+    components: {
+      Entete,
+      BasDePage,
+  },
     data () {
         return {
             form: {
