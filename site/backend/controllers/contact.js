@@ -7,7 +7,7 @@ const pool = mysql.createPool({
     user: 'root',
     password: 'admin',
     database: 'siteKabori',
-    connectionLimit: 18
+    connectionLimit: 20
 });
 exports.getContact= (req, res) => {
     pool.getConnection((err, con) => {

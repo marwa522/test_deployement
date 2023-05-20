@@ -35,17 +35,22 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <h2>Informations de contact</h2>
-                <p><i class="fas fa-phone-alt"></i> +32 1 23 45 67 89</p>
-                <p><i class="fas fa-envelope"></i> info@sitekabori.com</p>
+                <div v-if="show">
+                    <h2>Confirmation</h2>
+                    <p v-if="success" class="text-success">Message envoyé avec succès !</p>
+                    <p v-else class="text-danger">Erreur lors de l'envoi du message.</p>
+                </div>
             </div>
+                 <div class="col-md-6">
+                    <h2>Informations de contact</h2>
+                   <p><i class="fas fa-phone-alt"></i> +32 1 23 45 67 89</p>
+                   <p><i class="fas fa-envelope"></i> info@sitekabori.com</p>
+                 </div>
         </div>
     </div>
 </template>
 
 <script>
-
-
 import axios from 'axios';
 
 export default {
@@ -58,16 +63,17 @@ export default {
                 phone: '',
                 message: ''
             },
-            show: true
+            show: false,
+            success: false
         }
     },
     methods: {
-        submitForm (evt) {
-            evt.preventDefault();
+        submitForm () {
             axios.post('http://localhost:3000/contact', this.form)
                 .then(response => {
                     console.log(response);
-                    alert('Message envoyé avec succès !');
+                    this.show = true;
+                    this.success = true;
                     this.form.name = '';
                     this.form.email = '';
                     this.form.phone = '';
@@ -75,26 +81,13 @@ export default {
                 })
                 .catch(error => {
                     console.error('Erreur lors de l\'envoi du message:', error);
-                    alert('Erreur lors de l\'envoi du message.');
+                    this.show = true;
+                    this.success = false;
                 });
-        },
-        onReset (evt) {
-            evt.preventDefault();
-            /* Reset our form values */
-            this.form.name = '';
-            this.form.email = '';
-            this.form.phone = '';
-            this.form.message = '';
-
-            this.show = false;
-            this.$nextTick(() => {
-                this.show = true;
-            });
         }
-    },
+    }
 }
 </script>
-
 
 <style scoped>
 #contact {
