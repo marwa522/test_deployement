@@ -1,5 +1,4 @@
 <template>
-<<<<<<< HEAD
     <header>
         <Entete/>
     </header>
@@ -18,7 +17,7 @@
                             <input type="email" class="form-control" id="email" v-model="form.email" required>
                         </div>
                         <div class="form-group">
-                            <label for="phone">Téléphone</label>
+                            <label for="phone">Téléphone </label>
                             <input type="tel" class="form-control" id="phone" v-model="form.phone">
                         </div>
                         <div class="form-group">
@@ -37,44 +36,6 @@
                                 <img src="https://storage.cloud.google.com/photokabori/Photo%20Polychrome/images/insta.png" alt="Instagram logo" />
                             </a>
                         </div>
-=======
-  <header>
-    <Entete/>
-  </header>
-  <main>
-    <div class="container" id="contact">
-        <div class="row">
-            <div class="col-md-6">
-                <h2>Contactez-nous</h2>
-                <form @submit.prevent="submitForm">
-                    <div class="form-group">
-                        <label for="name">Nom et Prénom</label>
-                        <input type="text" class="form-control" id="name" v-model="form.name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" v-model="form.email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Téléphone</label>
-                        <input type="tel" class="form-control" id="phone" v-model="form.phone">
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea class="form-control" id="message" rows="5" v-model="form.message" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-animate btn-white">Envoyer</button>
-                </form>
-                <div class="mt-5 follow-us">
-                    <h4>Suivez-nous sur :</h4>
-                    <div class="social-media-icons">
-                        <a href="https://www.facebook.com/yourpage" target="_blank">
-                            <img src="Facebook_icon.svg.png" alt="facebook logo" />
-                        </a>
-                        <a href="https://www.instagram.com/yourpage" target="_blank">
-                            <img src="insta.png" alt="Instagram logo" />
-                        </a>
->>>>>>> 08058b203fcf7a91294d847ea5fbc6347c98fa6c
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -91,18 +52,10 @@
                 </div>
             </div>
         </div>
-<<<<<<< HEAD
     </main>
     <footer>
         <BasDePage/>
     </footer>
-=======
-    </div>
-  </main>
-  <footer>
-    <BasDePage/>
-  </footer>
->>>>>>> 08058b203fcf7a91294d847ea5fbc6347c98fa6c
 </template>
 
 <script>
@@ -113,15 +66,9 @@ import Entete from "@/components/Entete.vue";
 export default {
     name: 'Contact',
     components: {
-<<<<<<< HEAD
         Entete,
         BasDePage,
     },
-=======
-      Entete,
-      BasDePage,
-  },
->>>>>>> 08058b203fcf7a91294d847ea5fbc6347c98fa6c
     data () {
         return {
             form: {
@@ -245,4 +192,5 @@ export default {
     color: rgb(255,215,0);
 }
 </style>
+
 
