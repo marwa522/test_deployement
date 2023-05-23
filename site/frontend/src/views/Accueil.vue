@@ -3,7 +3,7 @@
     <Entete/>
   </header>
   <main>
-    <img id="model3" src="model3.jpeg"  alt="photo page d'accueil"  class="pr-img">
+    <v-parallax id="model3" src="model3.jpeg"  alt="photo page d'accueil"  class="pr-img contain"></v-parallax>
     <div class="pr-text">
       <div data-aos="flip-left" class="pr-text1">KABORI CREATIONS <br>
           Robes d'événements sur-mesure <br>
@@ -22,8 +22,8 @@
       <div id="kabodium">
         <h1 id="titre-event">Kabori sur un podium</h1>
         <v-carousel v-model="model1" show-arrows="hover" cycle hide-delimiter-background>
-          <v-carousel-item v-for="photo in photoevent" :value="photo.id"  :key="photo.id">
-            <v-img :src="photo.url" />
+          <v-carousel-item v-for="photo in photoevent" :value="photo.id"  :key="photo.id" >
+            <v-img :src="photo.url"  />
           </v-carousel-item>
         </v-carousel>
       </div>
@@ -161,6 +161,10 @@ export default {
   text-align: center;
   font-family: "Cambria Math";
   color: black;
+}
+
+.kaborimage {
+  background-color: #000000;
 }
 
 </style>

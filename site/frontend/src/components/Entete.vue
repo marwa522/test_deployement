@@ -1,7 +1,23 @@
 <template>
   <div>
     <div class="entete">
-      <img id="logo1" class="image" src="logo1.png" alt="logo">
+      <v-row align="center" justify="space-between" >
+        <v-col cols="auto" >
+          <router-link to="/devis" class="no-underline">
+            <v-btn color="yellow darken-2" >Demander un devis</v-btn>
+          </router-link>
+        </v-col>
+        <v-col cols="auto" >
+          <router-link to="/" class="no-underline">
+            <img id="logo1" class="image" src="logo1.png" alt="logo">
+          </router-link>
+        </v-col>
+        <v-col cols="auto" >
+          <router-link to="/connexion" class="no-underline">
+            <v-btn color="yellow darken-2" >Se connecter</v-btn>
+          </router-link>
+        </v-col>
+      </v-row>
       <nav class="navbar">
         <ul class="nav-list">
           <li ><router-link to="/" class="no-underline">Accueil</router-link></li>

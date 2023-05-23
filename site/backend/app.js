@@ -1,42 +1,28 @@
 const express = require('express');
-
 const bodyParser = require('body-parser');
+const mysql = require('mysql');
+const cors = require('cors');
+const avisRoutes = require('./routes/avis');
+const clientsRoutes = require('./routes/clients');
+const eventRoutes = require('./routes/photoevents');
+const creationsRoutes = require('./routes/photocreations');
+const collectionsRoutes = require('./routes/collections');
+const categRoutes = require('./routes/categ');
+const prodRoutes = require('./routes/produits');
+const contactRoutes = require('./routes/contact');
+const devisRoutes = require('./routes/devis');
 
 const app = express();
 
-const mysql = require('mysql');
-
-const cors = require('cors');
-
-const path = require('path');
-
-const eventRoutes = require('./routes/photoevents');
-
-const creationsRoutes = require('./routes/photocreations');
-
-const collectionsRoutes = require('./routes/collections');
-
-const categRoutes = require('./routes/categ');
-
-const prodRoutes = require('./routes/produits');
-
-const contactRoutes = require('./routes/contact');
-
-
-//app.use(contactRouter);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
-
-
-const con = mysql.createConnection({
+mysql.createConnection({
   host: "34.79.25.79",
   user: "root",
   password: "admin",
-  database : "siteKabori"
+  database: "siteKabori"
 });
-
-// Créer une connexion pool
+// Créer une connexion
 const pool = mysql.createPool({
   host: '34.79.25.79',
   user: 'root',
@@ -55,20 +41,15 @@ const corsOptions = {
 // Activer CORS avec les options configurées pour toutes les requêtes
 app.use(cors(corsOptions));
 
-//Différents appels API
+// Différents appels API
+app.use('/avis', avisRoutes);
 app.use('/categ', categRoutes);
-app.use('/collections',collectionsRoutes);
-app.use('/photoevents', eventRoutes);
-app.use('/photocreations',creationsRoutes);
-app.use('/prod', prodRoutes);
+app.use('/clients', clientsRoutes);
+app.use('/collections', collectionsRoutes);
 app.use('/contact', contactRoutes);
+app.use('/photoevents', eventRoutes);
+app.use('/photocreations', creationsRoutes);
+app.use('/prod', prodRoutes);
+app.use('/devis', devisRoutes);
 
-
-app.use(express.json());
 module.exports = app;
-
-
-
-
-
-

@@ -1,42 +1,73 @@
 <template>
-  <header>
-      <Entete/>
-  </header>
-  <main class="backgroundImage">
-    <div class="collection" v-for="collection in collections"   :key="collection.id" >
-      <h1><button @click="thisCollection = collection.nom, recupModels();" @dblclick="thisCollection = ''" >{{ collection.nom }}</button></h1>
-      <p>{{ collection.description }}</p> <br><br>
+  <header><Entete/></header>
 
+  <main >
+    <v-container v-for="collection in collections" >
+      <v-row dense>
+        <v-col cols="12">
+          <v-card
+              color=""
+              theme="dark"
+          >
+            <div class="d-flex flex-no-wrap justify-space-between">
+              <div>
+                <v-card-title class="text-h5">
+                  {{collection.nom}}
+                </v-card-title>
 
-      <div class="model" v-for="model in models" v-bind:key="model.id"  v-if="thisCollection === collection.nom" >
-        <h2 ><button @click="thisModel = model, recuPhoto();" @dblclick="thisModel= ''">{{model.nom}}</button></h2>
-        <p class="descModel">
-          {{model.description}}
-        </p><br>
-        <div class="imgModel">
-          <div class="photo" v-for="photo in photos"  :key="photo.id"  v-if="thisModel.nom === model.nom">
-            <button @click="overlay = !overlay; overlayImg=photo" >
-              <img :src=photo alt="image1"/>qz
-            </button>
+                <v-card-subtitle>{{ collection.description }}</v-card-subtitle>
 
-            <v-overlay v-if="overlay" v-model="overlay"  class="overlay">
-              <button @click="overlay = !overlay">
-                <img :src=overlayImg alt="image1" class="overlayImg"/>
-              </button>
-            </v-overlay>
+                <v-card-actions>
+                  <v-btn
+                      class="ms-2"
+                      variant="outlined"
+                      size="small"
+                      @click="thisCollection = collection.nom, recupModels(collection.nom);"
+                      @dblclick="thisCollection = ''">
+                    Voir les modèles de cette collection
+                  </v-btn>
+                </v-card-actions>
 
-          </div>
-        </div>
-        <p class="prix">{{model.prix}}€</p>
-      </div>
-      <br><hr><br>
-    </div>
+              </div>
+              <div>
+                <v-avatar class="ma-3" size="200" rounded="0"><v-img  src="model1.jpeg"></v-img></v-avatar>
+                <v-avatar class="ma-3" size="200" rounded="0"><v-img  src="model2.jpeg"></v-img></v-avatar>
+              </div>
 
+            </div>
+            <div v-if="thisCollection === collection.nom">
+              <div class="model" v-for="model in models" v-bind:key="model.id" >
+                <h2 >{{model.nom}} {{this.recuPhoto(model)}}</h2>
+                <p class="descModel">
+                  {{model.description}}
+                </p><br>
+                <div class="imgModel">
+                  <div class="photo" v-for="photo in photos.slice(2,6)"  :key="photo.id" >
+                    <button @click="overlay = !overlay; overlayImg=photo" >
+                      <img :src=photo alt="image1"/>
+                    </button>
 
+                    <v-overlay v-if="overlay" v-model="overlay"  class="overlay">
+                      <button @click="overlay = !overlay">
+                        <img :src=overlayImg alt="image1" class="overlayImg"/>
+                      </button>
+                    </v-overlay>
+
+                  </div>
+                </div>
+                <p class="prix">{{model.prix}}€</p>
+              </div>
+            </div>
+          </v-card>
+
+        </v-col>
+
+      </v-row>
+
+    </v-container>
   </main>
-  <footer >
-    <BasDePage/>
-  </footer>
+
+  <footer><BasDePage/></footer>
 </template>
 
 <script>
@@ -52,12 +83,6 @@ export default {
       models : [],
       thisModel:"",
       photos : [],
-      images1: [
-        { id: 1, url: 'model1.jpeg' },
-        { id: 2, url: 'model2.jpeg' },
-        { id: 3, url: 'model3.jpeg' },
-        { id: 4, url: 'model4.jpeg' }
-      ],
       model1: 1,
       overlay: false,
       overlayImg:"",
@@ -77,11 +102,11 @@ export default {
             console.error('Erreur lors de la récupération de la liste des collections :', error);
           })
     },
-    recupModels() {
+    recupModels(collection) {
 
       axios.get('http://localhost:3000/prod/' ,{
         params:{
-          col: this.thisCollection
+          col: collection
         }})
           .then(response => {
             this.models = response.data;
@@ -90,12 +115,8 @@ export default {
             console.error('Erreur lors de la récupération de la liste des modèles:', error);
           })
     },
-    recuPhoto(){
-      this.photos = [];
-      this.photos.push(this.thisModel.photo1);
-      this.photos.push(this.thisModel.photo2);
-      this.photos.push(this.thisModel.photo3);
-      this.photos.push(this.thisModel.photo4);
+    recuPhoto(photo){
+      this.photos = Object.values(photo);
     }
   },
 
@@ -118,12 +139,9 @@ export default {
 </script>
 
 <style scoped>
-/*.backgroundImage{
-  background-image: url('model2.jpeg');
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-}*/
+main {
+  min-height: 800px;
+}
 .model{
   display: flex;
   flex-direction: column;

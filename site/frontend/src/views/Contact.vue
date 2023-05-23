@@ -1,60 +1,74 @@
 <template>
-    <div class="container" id="contact">
-        <div class="row">
-            <div class="col-md-6">
-                <h2>Contactez-nous</h2>
-                <form @submit.prevent="submitForm">
-                    <div class="form-group">
-                        <label for="name">Nom et Prénom</label>
-                        <input type="text" class="form-control" id="name" v-model="form.name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" v-model="form.email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Téléphone</label>
-                        <input type="tel" class="form-control" id="phone" v-model="form.phone">
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea class="form-control" id="message" rows="5" v-model="form.message" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-animate btn-white">Envoyer</button>
-                </form>
-                <div class="mt-5 follow-us">
-                    <h4>Suivez-nous sur :</h4>
-                    <div class="social-media-icons">
-                        <a href="https://www.facebook.com/yourpage" target="_blank">
-                            <img src="Facebook_icon.svg.png" alt="facebook logo" />
-                        </a>
-                        <a href="https://www.instagram.com/yourpage" target="_blank">
-                            <img src="insta.png" alt="Instagram logo" />
-                        </a>
+    <header>
+        <Entete/>
+    </header>
+    <main>
+        <div class="container" id="contact">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>Contactez-nous</h2>
+                    <form @submit.prevent="submitForm">
+                        <div class="form-group">
+                            <label for="name">Nom et Prénom</label>
+                            <input type="text" class="form-control" id="name" v-model="form.name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" v-model="form.email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Téléphone</label>
+                            <input type="tel" class="form-control" id="phone" v-model="form.phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea class="form-control" id="message" rows="5" v-model="form.message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-animate btn-white">Envoyer</button>
+                    </form>
+                    <div class="mt-5 follow-us">
+                        <h4>Suivez-nous sur :</h4>
+                        <div class="social-media-icons">
+                            <a href="https://www.facebook.com/kaboricreations" target="_blank">
+                                <img src="https://storage.cloud.google.com/photokabori/Photo%20Polychrome/images/Facebook_icon.svg.png" alt="facebook logo" />
+                            </a>
+                            <a href="https://www.instagram.com/kabori_creations/" target="_blank">
+                                <img src="https://storage.cloud.google.com/photokabori/Photo%20Polychrome/images/insta.png" alt="Instagram logo" />
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-6">
-                <div v-if="show">
-                    <h2>Confirmation</h2>
-                    <p v-if="success" class="text-success">Message envoyé avec succès !</p>
-                    <p v-else class="text-danger">Erreur lors de l'envoi du message.</p>
+                <div class="col-md-6">
+                    <div v-if="show">
+                        <h2>Confirmation</h2>
+                        <p v-if="success" class="text-success">Message envoyé avec succès !</p>
+                        <p v-else class="text-danger">Erreur lors de l'envoi du message.</p>
+                    </div>
                 </div>
-            </div>
-                 <div class="col-md-6">
+                <div class="col-md-6">
                     <h2>Informations de contact</h2>
-                   <p><i class="fas fa-phone-alt"></i> +32 1 23 45 67 89</p>
-                   <p><i class="fas fa-envelope"></i> info@sitekabori.com</p>
-                 </div>
+                    <p><i class="fas fa-phone-alt"></i> +32 1 23 45 67 89</p>
+                    <p><i class="fas fa-envelope"></i> info@sitekabori.com</p>
+                </div>
+            </div>
         </div>
-    </div>
+    </main>
+    <footer>
+        <BasDePage/>
+    </footer>
 </template>
 
 <script>
 import axios from 'axios';
+import BasDePage from "@/components/BasDePage.vue";
+import Entete from "@/components/Entete.vue";
 
 export default {
     name: 'Contact',
+    components: {
+        Entete,
+        BasDePage,
+    },
     data () {
         return {
             form: {
@@ -178,6 +192,4 @@ export default {
     color: rgb(255,215,0);
 }
 </style>
-
-
 

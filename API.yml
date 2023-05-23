@@ -1,0 +1,666 @@
+#Catégorie
+
+Endpoint : /categories/
+Method : GET
+Description : consulter la liste de toutes les categories.
+Request :
+Headers :
+- Content-Type : application/json
+- Authorization : Bearer <token>
+
+Responses :
+Success :
+Code : 200
+Content-Type : application/json
+Body :
+[
+    {
+        "id": 2,
+        "nom": "deuxième catégorie",
+        "description": "robes soirées"
+    },
+    {
+        "id": 3,
+        "nom": "une nouvelle categ",
+        "description": "la meilleure des categ"
+    },
+    {
+        "id": 4,
+        "nom": "première catégorie",
+        "description": "robe d'events 2"
+    }
+]
+Error :
+Code : 404
+Content-Type : application/json
+Body :
+{
+"error": "Categ not found"
+}
+
+
+Endpoint : categ?id=x?nom=y?description=z/
+Method : Post
+Description : ajouter une nouvelle catégorie dans la table catégorie.
+Request :
+Headers :
+- Content-Type : application/json
+- Authorization : Bearer <token>
+
+Responses :
+Success :
+Code : 201
+Content-Type : application/json
+Body :
+[
+    {
+        "id": 5,
+        "nom": "cinquiéme catégorie",
+        "description": "robes soirées"
+   }
+]
+
+Endpoint : /categ/
+Method : DELETE
+Description : supprimer la table catégorie.
+Request :
+Headers :
+- Content-Type : application/json
+- Authorization : Bearer <token>
+
+Responses :
+Success :
+Code : 204
+
+#Clients
+
+Endpoint : /client/:id
+Method : GET
+Description : Rechercher un client dans la base de données en utilisant son ID.
+Request :
+Headers :
+- Content-Type : application/json
+- Authorization : Bearer <token>
+
+Responses :
+Success :
+Code : 200
+Content-Type : application/json
+Body :
+{
+"id": 123,
+"name": "John Doe",
+"email": "johndoe@example.com",
+"phone": "+1 555-555-5555"
+}
+Error :
+Code : 404
+Content-Type : application/json
+Body :
+{
+"error": "Client not found"
+}
+
+
+
+#Collections
+
+Endpoint : /collections/
+Method : GET
+Description : consulter la liste de toutes les collections.
+Request :
+Headers :
+- Content-Type : application/json
+- Authorization : Bearer <token>
+
+Responses :
+Success :
+Code : 200
+Content-Type : application/json
+Body :
+[
+    {
+        "id": 7,
+        "nom": "une collection d'essai",
+        "description": "changement de description"
+    },
+    {
+        "id": 8,
+        "nom": "collection 1",
+        "description": "c'est la première collection"
+    },
+    {
+        "id": 9,
+        "nom": "collection 2",
+        "description": "c'est la deuxième collection"
+    }
+]
+Error :
+Code : 404
+Content-Type : application/json
+Body :
+{
+"error": "Collections not found"
+}
+
+
+
+Endpoint : collections/:id:nom:description/
+Method : Post
+Description : ajouter une nouvelle collection  dans la table collections.
+Request :
+Headers :
+- Content-Type : application/json
+- Authorization : Bearer <token>
+
+Responses :
+Success :
+Code : 201
+Content-Type : application/json
+Body :
+[
+    {
+        "id": 10 ,
+        "nom": "une collection d'essai",
+        "description": "3eme collection"
+    }
+]
+
+Endpoint : /collections/
+Method : DELETE
+Description : supprimer la table des collections.
+Request :
+Headers :
+- Content-Type : application/json
+- Authorization : Bearer <token>
+
+Responses :
+Success :
+Code : 204
+
+
+Responses :
+Success :
+Code : 204
+Content-Type : application/json
+Body :
+[
+    {
+        "id": 5,
+        "nom": "cinquiéme catégorie",
+        "description": "robes soirées"
+   }
+]
+
+#Photocreations
+
+Endpoint : /photocreations/
+Method : GET
+Description : consulter la liste de toute les photocreations
+Request :
+Headers :
+- Content-Type : application/json
+- Authorization : Bearer <token>
+
+Responses :
+Success :
+Code : 200
+Content-Type : application/json
+Body[
+    {
+        "id": 1,
+        "url": "model5.jpeg",
+        "description": "photo création 1",
+        "nom": ""
+    },
+    {
+        "id": 2,
+        "url": "model4.jpeg",
+        "description": "photo création 2",
+        "nom": ""
+    },
+    {
+        "id": 3,
+        "url": "model3.jpeg",
+        "description": "photo création 3",
+        "nom": ""
+    },
+    {
+        "id": 4,
+        "url": "model2.jpeg",
+        "description": "photo création 4",
+        "nom": ""
+    },
+    {
+        "id": 5,
+        "url": "model1.jpeg",
+        "description": "photo création 5",
+        "nom": ""
+    }
+] :
+
+Error :
+Code : 404
+Content-Type : application/json
+Body :
+{
+"error": "photocreations not found"
+}
+
+
+#PhotoEvents
+
+Endpoint : /photoevents/
+Method : GET
+Description : consulter la liste de toutes les photoevents.
+Request :
+Headers :
+- Content-Type : application/json
+- Authorization : Bearer <token>
+
+Responses :
+Success :
+Code : 200
+Content-Type : application/json
+Body :
+[
+    {
+        "id": 1,
+        "url": "model1.jpeg",
+        "description": "photo event 1",
+        "nom": ""
+    },
+    {
+        "id": 2,
+        "url": "model2.jpeg",
+        "description": "photo event 2",
+        "nom": ""
+    },
+    {
+        "id": 3,
+        "url": "model3.jpeg",
+        "description": "photo event 3",
+        "nom": ""
+    },
+    {
+        "id": 4,
+        "url": "model4.jpeg",
+        "description": "photo event 4",
+        "nom": ""
+    },
+    {
+        "id": 5,
+        "url": "model5.jpeg",
+        "description": "photo event 5",
+        "nom": ""
+    },
+    {
+        "id": 7,
+        "url": "model1.jpeg",
+        "description": "photo event 1",
+        "nom": "le 2e meilleur nom"
+    }
+]
+Error :
+Code : 404
+Content-Type : application/json
+Body :
+{
+"error": "photoevents not found"
+}
+
+#Produits
+
+Endpoint : /prod/
+Method : GET
+Description : consulter la liste de toutes les produits.
+Request :
+Headers :
+- Content-Type : application/json
+- Authorization : Bearer <token>
+
+Responses :
+Success :
+Code : 200
+Content-Type : application/json
+Body :
+[
+    {
+        "id": 1,
+        "nom": "modèle 1",
+        "photo1": "model1.jpeg",
+        "photo2": "model1.jpeg",
+        "photo3": "model1.jpeg",
+        "photo4": "model5.jpeg",
+        "categ": "une nouvelle categ",
+        "collection": "une collection d'essai",
+        "description": "c'est le premier modèle",
+        "prix": 100
+    },
+    {
+        "id": 2,
+        "nom": "modèle 2",
+        "photo1": "model2.jpeg",
+        "photo2": "model1.jpeg",
+        "photo3": "model1.jpeg",
+        "photo4": "model4.jpeg",
+        "categ": "deuxième catégorie",
+        "collection": "une collection d'essai",
+        "description": "c'est le deuxième modèle",
+        "prix": 200
+    },
+    {
+        "id": 3,
+        "nom": "modèle 3",
+        "photo1": "model3.jpeg",
+        "photo2": "model3.jpeg",
+        "photo3": "model3.jpeg",
+        "photo4": "model1.jpeg",
+        "categ": "première catégorie",
+        "collection": "collection 1",
+        "description": "description 3",
+        "prix": 200
+    },
+    {
+        "id": 4,
+        "nom": "modèle 4",
+        "photo1": "model4.jpeg",
+        "photo2": "model4.jpeg",
+        "photo3": "model4.jpeg",
+        "photo4": "model2.jpeg",
+        "categ": "une nouvelle categ",
+        "collection": "collection 2",
+        "description": "description 4",
+        "prix": 500
+    },
+    {
+        "id": 5,
+        "nom": "modèle 5",
+        "photo1": "model5.jpeg",
+        "photo2": "model5.jpeg",
+        "photo3": "model5.jpeg",
+        "photo4": "model1.jpeg",
+        "categ": "une nouvelle categ",
+        "collection": "une collection d'essai",
+        "description": "c'est le 5e modèle",
+        "prix": 100
+    }
+]
+Error :
+Code : 404
+Content-Type : application/json
+Body :
+{
+"error": "prod not found"
+}
+
+
+Endpoint : /prod?col='collection 1'/
+Method : GET
+Description : consulter la liste des produits d'une collection spécifique .
+Request :
+Headers :
+- Content-Type : application/json
+- Authorization : Bearer <token>
+
+Responses :
+Success :
+Code : 200
+Content-Type : application/json
+Body :
+[
+    {
+        "id": 1,
+        "nom": "modèle 1",
+        "photo1": "model1.jpeg",
+        "photo2": "model1.jpeg",
+        "photo3": "model1.jpeg",
+        "photo4": "model5.jpeg",
+        "categ": "une nouvelle categ",
+        "collection": "une collection d'essai",
+        "description": "c'est le premier modèle",
+        "prix": 100
+    },
+    {
+        "id": 2,
+        "nom": "modèle 2",
+        "photo1": "model2.jpeg",
+        "photo2": "model1.jpeg",
+        "photo3": "model1.jpeg",
+        "photo4": "model4.jpeg",
+        "categ": "deuxième catégorie",
+        "collection": "une collection d'essai",
+        "description": "c'est le deuxième modèle",
+        "prix": 200
+    },
+    {
+        "id": 3,
+        "nom": "modèle 3",
+        "photo1": "model3.jpeg",
+        "photo2": "model3.jpeg",
+        "photo3": "model3.jpeg",
+        "photo4": "model1.jpeg",
+        "categ": "première catégorie",
+        "collection": "collection 1",
+        "description": "description 3",
+        "prix": 200
+    },
+    {
+        "id": 4,
+        "nom": "modèle 4",
+        "photo1": "model4.jpeg",
+        "photo2": "model4.jpeg",
+        "photo3": "model4.jpeg",
+        "photo4": "model2.jpeg",
+        "categ": "une nouvelle categ",
+        "collection": "collection 2",
+        "description": "description 4",
+        "prix": 500
+    },
+    {
+        "id": 5,
+        "nom": "modèle 5",
+        "photo1": "model5.jpeg",
+        "photo2": "model5.jpeg",
+        "photo3": "model5.jpeg",
+        "photo4": "model1.jpeg",
+        "categ": "une nouvelle categ",
+        "collection": "une collection d'essai",
+        "description": "c'est le 5e modèle",
+        "prix": 100
+    }
+]
+Error :
+Code : 404
+Content-Type : application/json
+Body :
+{
+"error": "prod not found"
+}
+
+
+
+Endpoint : /prod?categ=une nouvelle categ/
+Method : GET
+Description : consulter la liste des produits d'une catégorie spécifique .
+Request :
+Headers :
+- Content-Type : application/json
+- Authorization : Bearer <token>
+
+Responses :
+Success :
+Code : 200
+Content-Type : application/json
+Body :
+[
+    {
+        "id": 1,
+        "nom": "modèle 1",
+        "photo1": "model1.jpeg",
+        "photo2": "model1.jpeg",
+        "photo3": "model1.jpeg",
+        "photo4": "model5.jpeg",
+        "categ": "une nouvelle categ",
+        "collection": "une collection d'essai",
+        "description": "c'est le premier modèle",
+        "prix": 100
+    },
+    {
+        "id": 2,
+        "nom": "modèle 2",
+        "photo1": "model2.jpeg",
+        "photo2": "model1.jpeg",
+        "photo3": "model1.jpeg",
+        "photo4": "model4.jpeg",
+        "categ": "deuxième catégorie",
+        "collection": "une collection d'essai",
+        "description": "c'est le deuxième modèle",
+        "prix": 200
+    },
+    {
+        "id": 3,
+        "nom": "modèle 3",
+        "photo1": "model3.jpeg",
+        "photo2": "model3.jpeg",
+        "photo3": "model3.jpeg",
+        "photo4": "model1.jpeg",
+        "categ": "première catégorie",
+        "collection": "collection 1",
+        "description": "description 3",
+        "prix": 200
+    },
+    {
+        "id": 4,
+        "nom": "modèle 4",
+        "photo1": "model4.jpeg",
+        "photo2": "model4.jpeg",
+        "photo3": "model4.jpeg",
+        "photo4": "model2.jpeg",
+        "categ": "une nouvelle categ",
+        "collection": "collection 2",
+        "description": "description 4",
+        "prix": 500
+    },
+    {
+        "id": 5,
+        "nom": "modèle 5",
+        "photo1": "model5.jpeg",
+        "photo2": "model5.jpeg",
+        "photo3": "model5.jpeg",
+        "photo4": "model1.jpeg",
+        "categ": "une nouvelle categ",
+        "collection": "une collection d'essai",
+        "description": "c'est le 5e modèle",
+        "prix": 100
+    }
+]
+Error :
+Code : 404
+Content-Type : application/json
+Body :
+{
+"error": "prod not found"
+}
+
+
+Endpoint : /prod?prix=100/
+Method : GET
+Description : consulter la liste des produits d'un prix spécifique .
+Request :
+Headers :
+- Content-Type : application/json
+- Authorization : Bearer <token>
+
+Responses :
+Success :
+Code : 200
+Content-Type : application/json
+Body :
+[
+    {
+        "id": 1,
+        "nom": "modèle 1",
+        "photo1": "model1.jpeg",
+        "photo2": "model1.jpeg",
+        "photo3": "model1.jpeg",
+        "photo4": "model5.jpeg",
+        "categ": "une nouvelle categ",
+        "collection": "une collection d'essai",
+        "description": "c'est le premier modèle",
+        "prix": 100
+    },
+    {
+        "id": 2,
+        "nom": "modèle 2",
+        "photo1": "model2.jpeg",
+        "photo2": "model1.jpeg",
+        "photo3": "model1.jpeg",
+        "photo4": "model4.jpeg",
+        "categ": "deuxième catégorie",
+        "collection": "une collection d'essai",
+        "description": "c'est le deuxième modèle",
+        "prix": 200
+    },
+    {
+        "id": 3,
+        "nom": "modèle 3",
+        "photo1": "model3.jpeg",
+        "photo2": "model3.jpeg",
+        "photo3": "model3.jpeg",
+        "photo4": "model1.jpeg",
+        "categ": "première catégorie",
+        "collection": "collection 1",
+        "description": "description 3",
+        "prix": 200
+    },
+    {
+        "id": 4,
+        "nom": "modèle 4",
+        "photo1": "model4.jpeg",
+        "photo2": "model4.jpeg",
+        "photo3": "model4.jpeg",
+        "photo4": "model2.jpeg",
+        "categ": "une nouvelle categ",
+        "collection": "collection 2",
+        "description": "description 4",
+        "prix": 500
+    },
+    {
+        "id": 5,
+        "nom": "modèle 5",
+        "photo1": "model5.jpeg",
+        "photo2": "model5.jpeg",
+        "photo3": "model5.jpeg",
+        "photo4": "model1.jpeg",
+        "categ": "une nouvelle categ",
+        "collection": "une collection d'essai",
+        "description": "c'est le 5e modèle",
+        "prix": 100
+    }
+]
+Error :
+Code : 404
+Content-Type : application/json
+Body :
+{
+"error": "prod not found"
+}   
+
+
+Endpoint : /prod?prix=100/
+Method : DELETE
+Description : supprimer des produits d'un prix spécifique.
+Request :
+Headers :
+- Content-Type : application/json
+- Authorization : Bearer <token>
+
+Responses :
+Success :
+Code : 404
+Content-Type : application/json
+Body :
+{
+        Cannot DELETE /prod
+   }
