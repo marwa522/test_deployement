@@ -1,45 +1,40 @@
 <template>
     <div>
         <header>
-            <Entete/>
+            <Entete />
         </header>
         <main>
             <div class="login-page">
                 <div class="login-container">
-                    <h1 class="login-title">Connexion</h1>
-                    <form class="login-form">
+                    <h1 class="login-title">{{ mode === 'connexion' ? 'Connexion' : 'Inscription' }}</h1>
+                    <form class="login-form" @submit.prevent="submitForm">
                         <div class="form-group">
-                            <label for="email">Email :</label>
+                            <label for="email">Adresse email :</label>
                             <input type="email" id="email" v-model="email" required>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" v-if="mode === 'connexion' || mode === 'creation'">
                             <label for="password">Mot de passe :</label>
                             <input type="password" id="password" v-model="password" required>
                         </div>
-                        <button type="submit" class="btn-primary btn-login">Se connecter</button>
+                        <div class="form-group" v-if="mode === 'creation'">
+                            <label for="confirmPassword">Confirmer le mot de passe :</label>
+                            <input type="password" id="confirmPassword" v-model="confirmPassword" required>
+                        </div>
+                        <button type="submit" class="btn-primary btn-login">
+                            {{ mode === 'connexion' ? 'Se connecter' : 'Créer un compte' }}
+                        </button>
                     </form>
                     <div class="signup-link">
-                        <p>Vous n'avez pas de compte ? <a href="#" @click="showSignupForm">Créer un compte</a></p>
+                        <p>
+                            {{ mode === 'connexion' ? "Vous n'avez pas de compte ?" : "Vous avez déjà un compte ?" }}
+                            <a href="#" @click="switchMode">{{ mode === 'connexion' ? 'Créer un compte' : 'Se connecter' }}</a>
+                        </p>
                     </div>
-                </div>
-                <div v-if="showSignup" class="signup-container">
-                    <h1 class="signup-title">Créer un compte</h1>
-                    <form class="signup-form">
-                        <div class="form-group">
-                            <label for="newEmail">Email :</label>
-                            <input type="email" id="newEmail" v-model="newEmail" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="newPassword">Mot de passe :</label>
-                            <input type="password" id="newPassword" v-model="newPassword" required>
-                        </div>
-                        <button type="submit" class="btn-primary">Créer le compte</button>
-                    </form>
                 </div>
             </div>
         </main>
         <footer>
-            <BasDePage/>
+            <BasDePage />
         </footer>
     </div>
 </template>
@@ -53,18 +48,32 @@ export default {
     components: { Entete, BasDePage },
     data() {
         return {
+            mode: "connexion",
             email: "",
             password: "",
-            newEmail: "",
-            newPassword: "",
-            showSignup: false,
+            confirmPassword: "",
         };
     },
     methods: {
-        showSignupForm() {
-            this.showSignup = true;
+        switchMode() {
+            this.mode = this.mode === "connexion" ? "creation" : "connexion";
         },
-        // Ajoutez ici les méthodes pour la soumission des formulaires de connexion et de création de compte
+        submitForm() {
+            if (this.mode === "connexion") {
+                this.performConnexion();
+            } else {
+                this.performInscription();
+            }
+        },
+        performConnexion() {
+            // Add your logic for login/authentication here
+        },
+        performInscription() {
+            if (this.password !== this.confirmPassword) {
+                // Passwords don't match, handle error
+            }
+            // Add your logic for user registration here
+        },
     },
 };
 </script>
@@ -79,7 +88,7 @@ export default {
 }
 
 .login-container {
-    width: 400px;
+    width: 600px;
     padding: 20px;
     margin-top: -100px;
     background-color: #000000;
@@ -91,11 +100,6 @@ export default {
     text-align: center;
     color: yellow;
     font-size: 24px;
-    margin-bottom: 20px;
-}
-
-.login-form,
-.signup-form {
     margin-bottom: 20px;
 }
 
@@ -140,8 +144,6 @@ input[type="password"] {
     cursor: pointer;
 }
 
-
-
 .signup-link {
     text-align: center;
 }
@@ -151,6 +153,4 @@ input[type="password"] {
     text-decoration: underline;
     cursor: pointer;
 }
-
-
 </style>
