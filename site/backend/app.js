@@ -28,7 +28,7 @@ const pool = mysql.createPool({
   user: 'root',
   password: 'admin',
   database: 'siteKabori',
-  connectionLimit: 10 // Nombre maximal de connexions dans la pool
+  connectionLimit: 20 // Nombre maximal de connexions dans la pool
 });
 
 // Configurer les options CORS

@@ -30,11 +30,13 @@ exports.getDevis = (req, res) => {
 
 exports.postDevis = (req, res) => {
     const client = req.body.nom;
-    const email = req.body.email;
+    const emailclient = req.body.email;
     const produit = req.body.modele;
-    const description_client = req.body.remarque;
+    const descriptionClient = req.body.remarque;
+    const statut = 'Devis demandé'
 
-    const sql = "INSERT INTO devis (client, email, produit, description_client) VALUES (?, ?, ?, ?)";
+
+    const sql = "INSERT INTO commandes (client, emailclient, produit, descriptionClient,statut) VALUES (?, ?, ?, ?,?)";
 
     pool.getConnection((err, con) => {
         if (err) {
@@ -42,20 +44,20 @@ exports.postDevis = (req, res) => {
             res.status(500).send('Erreur lors de la connexion à la base de données');
             return;
         }
-        con.query(sql, [client, email, produit, description_client], (err) => {
+        con.query(sql, [client, emailclient, produit, descriptionClient,statut], (err) => {
             con.release();
             if (err) {
                 console.log(err);
                 res.status(500).send('Erreur lors de l\'insertion des données dans la base de données');
                 return;
             }
-            sendEmail(client, email, produit, description_client, res);
+            sendEmail(client, emailclient, produit, descriptionClient, statut, res);
         });
     });
 };
 
 
-function sendEmail(client, email, produit, description_client, res) {
+function sendEmail(client, emailclient, produit, descriptionClient, res) {
     const transporter = nodemailer.createTransport({
         host: 'smtp-mail.outlook.com',
         port: 587,
@@ -77,9 +79,9 @@ function sendEmail(client, email, produit, description_client, res) {
             <p>Nouvelle demande de devis :</p>
             <ul>
                 <li><strong>Client :</strong> ${client}</li>
-                <li><strong>Email du client :</strong> ${email}</li>
+                <li><strong>Email du client :</strong> ${emailclient}</li>
                 <li><strong>Produit :</strong> ${produit}</li>
-                <li><strong>Description du client :</strong> ${description_client}</li>
+                <li><strong>Description du client :</strong> ${descriptionClient}</li>
             </ul>
         `
     };
