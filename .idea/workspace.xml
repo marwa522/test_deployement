@@ -5,9 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="01d6d40f-3770-42a5-885f-e9b825a7458c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.firebaserc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/ts_external_references.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Pub/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/site/backend/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/site/backend/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/backend/controllers/contact.js" beforeDir="false" afterPath="$PROJECT_DIR$/site/backend/controllers/contact.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/site/backend/controllers/devis.js" beforeDir="false" afterPath="$PROJECT_DIR$/site/backend/controllers/devis.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/frontend/src/views/Devis.vue" beforeDir="false" afterPath="$PROJECT_DIR$/site/frontend/src/views/Devis.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,23 +34,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;contact&quot;,
-    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;18.16.0&quot;,
-    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;18.16.0&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "contact",
+    "javascript.nodejs.core.library.configured.version": "18.16.0",
+    "javascript.nodejs.core.library.typings.version": "18.16.0",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -57,7 +66,9 @@
       <workItem from="1684859977835" duration="131000" />
       <workItem from="1684862075362" duration="7075000" />
       <workItem from="1684998288147" duration="2595000" />
-      <workItem from="1685001003066" duration="309000" />
+      <workItem from="1685001003066" duration="2501000" />
+      <workItem from="1685738012649" duration="1849000" />
+      <workItem from="1685739915168" duration="11275000" />
     </task>
     <servers />
   </component>

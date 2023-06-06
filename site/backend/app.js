@@ -23,14 +23,13 @@ mysql.createConnection({
   database: "siteKabori"
 });
 // Créer une connexion
-const pool = mysql.createPool({
+mysql.createPool({
   host: '34.79.25.79',
   user: 'root',
   password: 'admin',
   database: 'siteKabori',
-  connectionLimit: 20 // Nombre maximal de connexions dans la pool
+  connectionLimit: 100 // Nombre maximal de connexions dans la pool
 });
-
 // Configurer les options CORS
 const corsOptions = {
   origin: '*', // Mettre l'origine autorisée de votre choix, ou '*' pour autoriser toutes les origines

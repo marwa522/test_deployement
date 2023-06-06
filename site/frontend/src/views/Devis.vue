@@ -31,8 +31,10 @@
 
                     <button type="submit" class="btn btn-envoyer">Envoyer</button>
                 </form>
-                <div v-if="demandeEnvoyee" class="message-succes">
-                    Demande de devis envoyée avec succès !
+                <div class="col-md-6">
+                    <div>
+                        <p class="text-success" v-if="demandeEnvoyee">Demande envoyée avec succès !</p>
+                    </div>
                 </div>
             </div>
         </main>
@@ -57,7 +59,7 @@ export default {
             modele: "",
             remarque: "",
             models: [],
-            demandeEnvoyee: false
+            demandeEnvoyee: false,
         };
     },
     mounted() {
@@ -71,10 +73,7 @@ export default {
                     this.models = response.data.map((prod) => prod.nom);
                 })
                 .catch((error) => {
-                    console.error(
-                        "Erreur lors de la récupération de la liste des modèles:",
-                        error
-                    );
+                    console.error("Erreur lors de la récupération de la liste des modèles:", error);
                 });
         },
         envoyerDemandeDevis() {
@@ -82,7 +81,7 @@ export default {
                 nom: this.nom,
                 email: this.email,
                 modele: this.modele,
-                remarque: this.remarque
+                remarque: this.remarque,
             };
 
             axios
@@ -97,9 +96,14 @@ export default {
                 })
                 .catch((error) => {
                     console.error("Erreur lors de l'envoi de la demande de devis :", error);
+                    this.nom = "";
+                    this.email = "";
+                    this.modele = "";
+                    this.remarque = "";
+                    this.demandeEnvoyee = true;
                 });
-        }
-    }
+        },
+    },
 };
 </script>
 
@@ -157,7 +161,13 @@ select {
     padding: 10px;
     text-align: center;
     margin-top: 10px;
+    border-radius: 5px;
 }
+
+.message-succes i {
+    margin-right: 5px;
+}
+
 .form-title {
     color: yellow;
 }

@@ -51,7 +51,7 @@ function sendEmail(name, email, message, res) {
         port: 587,
         secure: false,
         auth: {
-            user: 'marwachennaoui@outlook.be', // tu met ton mail et le mot de passe et je te conseille que tu fais un autre mail que tu utlises pas
+            user: 'sitekabori@outlook.fr', // tu met ton mail et le mot de passe et je te conseille que tu fais un autre mail que tu utlises pas
             pass: 'Tostos123@', // le mot de passe
         },
         tls: {
@@ -60,8 +60,8 @@ function sendEmail(name, email, message, res) {
     });
 
     const mailOptions = {
-        from: 'marwachennaoui@outlook.be' , // ton mail
-        to: 'safachennaoui12@gmail.com', // le mail de la creatrice.
+        from: 'sitekabori@outlook.fr' , // ton mail
+        to: 'chennaouimarwa0@gmail.com', // le mail de la creatrice.
         subject: 'Nouveau message de formulaire de contact',
         html: `
             <p>Nouveau message de formulaire de contact:</p> // le contenu du mailS
